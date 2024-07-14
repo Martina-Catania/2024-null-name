@@ -43,3 +43,21 @@ FiniteDeckTest >> testWhenFiniteDeckIsCreatedItHasASetAmountOfCards [
 		         (aDeckCreator generateDeckWithAmountOfCards: 5).
 	self assert: aDeck deckSize equals: 5
 ]
+
+{ #category : 'tests' }
+FiniteDeckTest >> testbanana [
+
+	| aDeck aDeckCreator aCollectionOfCards |
+	aCollectionOfCards := OrderedCollection new.
+	aDeckCreator := CardDeckCreator createWithProbabilityDistribution:
+		                (OrderedCollection with: (ProbabilityAssociation
+				                  associate: CancellationCard
+				                  withProbability: 100)).
+	aDeck := FiniteDeck withCards:
+		         (aDeckCreator generateDeckWithAmountOfCards: 15).
+	10 timesRepeat: [ aCollectionOfCards add: aDeck cardAtRandom ].
+
+	self assert:
+		(aCollectionOfCards allSatisfy: [ :card | card = CancellationCard ]).
+	self assert: aDeck deckSize equals: 5
+]

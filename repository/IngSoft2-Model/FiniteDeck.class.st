@@ -26,6 +26,16 @@ FiniteDeck class >> withCards: anArrayOfCards [
 	^ self new initalizeWithFiniteCards: anArrayOfCards
 ]
 
+{ #category : 'generating' }
+FiniteDeck >> cardAtRandom [
+
+	| aCard |
+	aCard := cards atRandom.
+	cards remove: aCard.
+	size := cards size.
+	^ aCard
+]
+
 { #category : 'accessing' }
 FiniteDeck >> deckSize [
 	^size
