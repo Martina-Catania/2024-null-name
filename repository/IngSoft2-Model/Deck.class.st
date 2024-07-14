@@ -6,7 +6,9 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'probabilityManager',
-		'probabilityCards'
+		'probabilityCards',
+		'cards',
+		'size'
 	],
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
@@ -32,10 +34,20 @@ Deck class >> withCardProbabilities: aProbabilityDistributionCollection [
 	^ self new initalizeWithCards: aProbabilityDistributionCollection.
 ]
 
+{ #category : 'class initialization' }
+Deck class >> withCards: anArrayOfCards [ 
+	^ self new initalizeWithFiniteCards: anArrayOfCards
+]
+
 { #category : 'generating' }
 Deck >> cardAtRandom [
 
 	^ probabilityManager elementAtRandom: probabilityCards
+]
+
+{ #category : 'accessing' }
+Deck >> deckSize [
+	^size
 ]
 
 { #category : 'initialization' }
@@ -47,4 +59,10 @@ Deck >> initalizeWithCards: aCollectionOfProbabilities [
 		                    transformIntoProbabilityRanges:
 		                    aCollectionOfProbabilities.
 
+]
+
+{ #category : 'initialization' }
+Deck >> initalizeWithFiniteCards: aCardCollection [ 
+	cards := aCardCollection.
+	size := aCardCollection size.
 ]

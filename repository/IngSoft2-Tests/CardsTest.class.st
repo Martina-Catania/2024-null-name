@@ -16,6 +16,19 @@ CardsTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMess
 ]
 
 { #category : 'tests' }
+CardsTest >> testBanana [
+
+	| aDeck aDeckCreator |
+	aDeckCreator := CardDeckCreator createWithProbabilityDistribution:
+		                (OrderedCollection with: (ProbabilityAssociation
+				                  associate: CancellationCard
+				                  withProbability: 100)).
+	aDeck := Deck withCards:
+		         (aDeckCreator generateDeckWithAmountOfCards: 5).
+	self assert: aDeck deckSize equals: 5
+]
+
+{ #category : 'tests' }
 CardsTest >> testTotalSumOfCardsProbabilitiesIs100 [
 
 	| aBoard aCollectionOfNames aCollectionOfDie aTileArray aDeck |
@@ -40,4 +53,20 @@ CardsTest >> testTotalSumOfCardsProbabilitiesIs100 [
 		raise: Error
 		withMessage:
 		'Total card probabilities cannot be diferent from 100%'
+]
+
+{ #category : 'tests' }
+CardsTest >> testWhenCardsAreTakenFormDeckTheyFollowTheProbabilityDistribution [
+
+	| aDeck aCollectionOfCards |
+	aDeck := Deck withCardProbabilities:
+		         (OrderedCollection with: (ProbabilityAssociation
+				           associate: CancellationCard
+				           withProbability: 100)).
+
+	aCollectionOfCards := OrderedCollection new.
+	10 timesRepeat: [ aCollectionOfCards add: aDeck cardAtRandom ].
+
+	self assert:
+		(aCollectionOfCards allSatisfy: [ :card | card = CancellationCard ])
 ]

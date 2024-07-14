@@ -34,7 +34,7 @@ TileEffectsCreator class >> probabilityDistributionIsValid: aProbabilityDistribu
 		sum := sum + effectProbability probability ].
 	sum = 100 ifFalse: [
 		Error signal:
-			'Total efffect probabilities cannot be diferent from 100%' ]
+			'Total effect probabilities cannot be diferent from 100%' ]
 ]
 
 { #category : 'comparing' }

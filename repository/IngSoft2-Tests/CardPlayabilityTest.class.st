@@ -128,22 +128,6 @@ CardPlayabilityTest >> testCannotPlayACardThatHasInvalidTarget [
 ]
 
 { #category : 'tests' }
-CardPlayabilityTest >> testWhenCardsAreTakenFormDeckTheyFollowTheProbabilityDistribution [
-
-	| aDeck aCollectionOfCards |
-	aDeck := Deck withCardProbabilities:
-		         (OrderedCollection with: (ProbabilityAssociation
-				           associate: CancellationCard
-				           withProbability: 100)).
-
-	aCollectionOfCards := OrderedCollection new.
-	10 timesRepeat: [ aCollectionOfCards add: aDeck cardAtRandom ].
-
-	self assert:
-		(aCollectionOfCards allSatisfy: [ :card | card = CancellationCard ])
-]
-
-{ #category : 'tests' }
 CardPlayabilityTest >> testWhenGameIsStartedShipsHave2Cards [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray aDeck collectionOfCards|
