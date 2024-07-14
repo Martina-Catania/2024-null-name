@@ -1,3 +1,6 @@
+"
+a card generator for finite deck initialization
+"
 Class {
 	#name : 'CardDeckCreator',
 	#superclass : 'Object',

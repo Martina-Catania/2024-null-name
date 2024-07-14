@@ -19,7 +19,7 @@ BoardProbabilityTest >> testTotalSumOfEffectsProbabilitiesIs100 [
 				aProbabilityDistributionCollection ]
 		raise: Error
 		withMessage:
-		'Total efffect probabilities cannot be diferent from 100%'
+		'Total effect probabilities cannot be diferent from 100%'
 ]
 
 { #category : 'tests' }

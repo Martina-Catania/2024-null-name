@@ -16,19 +16,6 @@ CardsTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMess
 ]
 
 { #category : 'tests' }
-CardsTest >> testBanana [
-
-	| aDeck aDeckCreator |
-	aDeckCreator := CardDeckCreator createWithProbabilityDistribution:
-		                (OrderedCollection with: (ProbabilityAssociation
-				                  associate: CancellationCard
-				                  withProbability: 100)).
-	aDeck := Deck withCards:
-		         (aDeckCreator generateDeckWithAmountOfCards: 5).
-	self assert: aDeck deckSize equals: 5
-]
-
-{ #category : 'tests' }
 CardsTest >> testTotalSumOfCardsProbabilitiesIs100 [
 
 	| aBoard aCollectionOfNames aCollectionOfDie aTileArray aDeck |
@@ -46,7 +33,7 @@ CardsTest >> testTotalSumOfCardsProbabilitiesIs100 [
 
 	self
 		should: [
-			aDeck := Deck withCardProbabilities:
+			aDeck := InfiniteDeck withCardProbabilities:
 				         (OrderedCollection with: (ProbabilityAssociation
 						           associate: CancellationCard
 						           withProbability: 50)) ]
@@ -59,7 +46,7 @@ CardsTest >> testTotalSumOfCardsProbabilitiesIs100 [
 CardsTest >> testWhenCardsAreTakenFormDeckTheyFollowTheProbabilityDistribution [
 
 	| aDeck aCollectionOfCards |
-	aDeck := Deck withCardProbabilities:
+	aDeck := InfiniteDeck withCardProbabilities:
 		         (OrderedCollection with: (ProbabilityAssociation
 				           associate: CancellationCard
 				           withProbability: 100)).
