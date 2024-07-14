@@ -2,44 +2,45 @@
 pharo deja de chillar
 "
 Class {
-	#name : #Unit,
-	#superclass : #Object,
+	#name : 'Unit',
+	#superclass : 'Object',
 	#instVars : [
 		'nominalValue'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 Unit class >> ratioInParsecs [
 	^ self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Unit class >> withNominalValue: aNominalValue [
 
 	^ self new initializeWithNominalValue: aNominalValue
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Unit >> > aUnit [
 
 	^ nominalValue > (aUnit toUnit: self class) nominalValue
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Unit >> initializeWithNominalValue: aNominalValue [
 
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Unit >> nominalValue [
 
 	^ nominalValue
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Unit >> toUnit: aUnit [
 
 	^ aUnit withNominalValue:

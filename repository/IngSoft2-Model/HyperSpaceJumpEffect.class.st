@@ -2,12 +2,13 @@
 HyperSpaceJump class
 "
 Class {
-	#name : #HyperSpaceJumpEffect,
-	#superclass : #EffectOnOneShip,
-	#category : #'IngSoft2-Model'
+	#name : 'HyperSpaceJumpEffect',
+	#superclass : 'EffectOnOneShip',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #applying }
+{ #category : 'applying' }
 HyperSpaceJumpEffect >> affectAShip: aShip [
 	
 	aShip moveTiles: 4.

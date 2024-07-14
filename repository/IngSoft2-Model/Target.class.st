@@ -1,31 +1,35 @@
+"
+target class
+"
 Class {
-	#name : #Target,
-	#superclass : #Object,
+	#name : 'Target',
+	#superclass : 'Object',
 	#instVars : [
 		'objective'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 Target class >> withObjective: anObjective [
 
 	^ self new initializeWithObjective: anObjective
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Target >> initializeWithObjective: anObjective [
 
 	objective := anObjective.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Target >> isValidWith: aCollection and: aCardHandler [
 
 	self subclassResponsibility
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Target >> objective [
 
 	^ objective

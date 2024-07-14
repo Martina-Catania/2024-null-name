@@ -1,10 +1,11 @@
 Class {
-	#name : #GameInitalizationTest,
-	#superclass : #GameTest,
-	#category : #'IngSoft2-Tests'
+	#name : 'GameInitalizationTest',
+	#superclass : 'GameTest',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameInitalizationTest >> testGameCannotBeInitializedWithoutABoard [
 
 	| aBoard aCollectionOfNames aCollectionOfDie |
@@ -21,7 +22,7 @@ GameInitalizationTest >> testGameCannotBeInitializedWithoutABoard [
 		withMessage: 'Game cannot be started without a board'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameInitalizationTest >> testGameCannotBeInitializedWithoutADice [
 
 	| aBoard aCollectionOfNames aDie aTileArray|
@@ -45,7 +46,7 @@ GameInitalizationTest >> testGameCannotBeInitializedWithoutADice [
 		withMessage: 'Game cannot be started without at least one die'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameInitalizationTest >> testGameCannotBeInitializedWithoutAnyShipNames [
 
 	| aCollectionOfNames aCollectionOfDie aTileArray|
@@ -68,7 +69,7 @@ GameInitalizationTest >> testGameCannotBeInitializedWithoutAnyShipNames [
 		withMessage: 'Game cannot be created without any Ship names'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameInitalizationTest >> testGameDoesNotAllowRepeatedShipNames [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray|

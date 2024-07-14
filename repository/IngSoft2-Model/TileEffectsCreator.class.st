@@ -2,8 +2,8 @@
 A Tile effect generator for Board initialization
 "
 Class {
-	#name : #TileEffectsCreator,
-	#superclass : #Object,
+	#name : 'TileEffectsCreator',
+	#superclass : 'Object',
 	#instVars : [
 		'probabilityEffects',
 		'tiles',
@@ -11,10 +11,11 @@ Class {
 		'hyperJumpArray',
 		'probabilityManager'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TileEffectsCreator class >> createWithProbabilityDistribution: aProbabilityDistributionCollection [
 
 	self probabilityDistributionIsValid: aProbabilityDistributionCollection.
@@ -23,7 +24,7 @@ TileEffectsCreator class >> createWithProbabilityDistribution: aProbabilityDistr
 		  initializeWithProbabilityDistribution: aProbabilityDistributionCollection
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TileEffectsCreator class >> probabilityDistributionIsValid: aProbabilityDistributionCollection [
 
 	| sum |
@@ -36,14 +37,14 @@ TileEffectsCreator class >> probabilityDistributionIsValid: aProbabilityDistribu
 			'Total efffect probabilities cannot be diferent from 100%' ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TileEffectsCreator >> determineRangeRandom [
 
 	^ (probabilityManager elementAtRandom: probabilityEffects) new
 		  generateParameters: self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TileEffectsCreator >> generateHyperJumpParameters: anEffect [
 
 	anEffect
@@ -52,7 +53,7 @@ TileEffectsCreator >> generateHyperJumpParameters: anEffect [
 		andLengthInParsecs: parsecs
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 TileEffectsCreator >> generateLoadedBoardWithAmountOfTiles: anAmountOfTiles withAmountOfParsecs: anAmountOfParsecs withWormHolePair: aWormHolePair withHyperJumpArray: aHyperJumpArray withAmountOfLaps: anAmountOfLaps withCardProbabilities: aCardProbability [
 
 	| tileEffectArray tileNumber |
@@ -92,14 +93,14 @@ TileEffectsCreator >> generateLoadedBoardWithAmountOfTiles: anAmountOfTiles with
 		  withAmountOfLaps: anAmountOfLaps
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 TileEffectsCreator >> generateMoonWalkParameters: anEffect [
 
 	anEffect initializeWithMoonwalkDistance:
 		(tiles) atRandom
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 TileEffectsCreator >> generateRandomBoardWithAmountOfTiles: anAmountOfTiles withAmountOfParsecs: anAmountOfParsecs withWormHolePair: aWormHolePair withHyperJumpArray: aHyperJumpArray withAmountOfLaps: anAmountOfLaps [
 
 	| tileEffectArray |
@@ -130,7 +131,7 @@ TileEffectsCreator >> generateRandomBoardWithAmountOfTiles: anAmountOfTiles with
 		  withAmountOfLaps: anAmountOfLaps
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TileEffectsCreator >> initializeWithProbabilityDistribution: aProbabilityDistributionCollection [
 
 	probabilityManager := ProbabilityManager new.
@@ -140,7 +141,7 @@ TileEffectsCreator >> initializeWithProbabilityDistribution: aProbabilityDistrib
 		                      aProbabilityDistributionCollection
 ]
 
-{ #category : #'argument validation' }
+{ #category : 'argument validation' }
 TileEffectsCreator >> wormHolePairIsValid: aWormHolePair with: aNumberOfTiles [
 
 	(aWormHolePair allSatisfy: [ :i |

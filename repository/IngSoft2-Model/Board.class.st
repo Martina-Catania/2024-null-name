@@ -5,25 +5,26 @@ NOTE TO FUTURE SELF:
 ""Can implement more effects by making a collection of Effects that create diferent tiles""
 "
 Class {
-	#name : #Board,
-	#superclass : #Object,
+	#name : 'Board',
+	#superclass : 'Object',
 	#instVars : [
 		'tileEffectArray',
 		'maxLap',
 		'parsecs',
 		'lightYears'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'argument validation' }
+{ #category : 'argument validation' }
 Board class >> amountOfLapsIsValid: anAmountOfLaps [
 
 	anAmountOfLaps strictlyPositive ifFalse: [
 		Error signal: 'Cannot play with less than 1 lap' ]
 ]
 
-{ #category : #'argument validation' }
+{ #category : 'argument validation' }
 Board class >> amountOfUnitIsValid: aBoardLength [
 
 	(aBoardLength toUnit: Parsec) nominalValue strictlyPositive ifFalse: [
@@ -33,14 +34,14 @@ Board class >> amountOfUnitIsValid: aBoardLength [
 		Error signal: 'Not enough LightYears for a single Parsec' ]
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Board class >> numberOfTilesIsValid: aNumberOfTiles [
 
 	aNumberOfTiles strictlyPositive ifFalse: [
 		Error signal: 'Board tiles must be greater than 0' ]
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Board class >> withTileEffectCollection: aTileEffect withLengthInUnits: aBoardLength withAmountOfLaps: anAmountOfLaps [
 	
 	self amountOfLapsIsValid: anAmountOfLaps.
@@ -53,7 +54,7 @@ Board class >> withTileEffectCollection: aTileEffect withLengthInUnits: aBoardLe
 		  withAmountOfLaps: anAmountOfLaps
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Board >> adjustShipPosition: aShip [
 
 	(self shouldAdjustShipPosition: aShip) ifFalse: [ ^ self ].
@@ -63,7 +64,7 @@ Board >> adjustShipPosition: aShip [
 		* (aShip position - 1 // tileEffectArray size) negated
 ]
 
-{ #category : #'accessing - arguments' }
+{ #category : 'accessing - arguments' }
 Board >> allTileEffectsAmount [
 
 	| countDictionary |
@@ -79,7 +80,7 @@ Board >> allTileEffectsAmount [
 	^ countDictionary
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Board >> applyTileEffectOn: aGame triggeredBy: aShip [
 
 	(tileEffectArray at: aShip position)
@@ -87,13 +88,13 @@ Board >> applyTileEffectOn: aGame triggeredBy: aShip [
 		activatedBy: aShip
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Board >> effectInPosition: aPosition [
 
 	^ tileEffectArray at: aPosition
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Board >> initializeWithTileEffectCollection: aTileEffectCollection withLengthInUnits: aBoardLength withAmountOfLaps: anAmountOfLaps [
 
 	maxLap := anAmountOfLaps.
@@ -103,31 +104,31 @@ Board >> initializeWithTileEffectCollection: aTileEffectCollection withLengthInU
 	tileEffectArray := aTileEffectCollection
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Board >> isInLastTile: aShip [
 
 	^ aShip position = 1 and: aShip lapsDone > maxLap
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Board >> numOfLightYears [
 
 	^ lightYears nominalValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Board >> numOfParsecs [
 
 	^ parsecs nominalValue 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Board >> numbOfTiles [
 
 	^ tileEffectArray size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Board >> shouldAdjustShipPosition: aShip [
 
 	^ (aShip position > tileEffectArray size and:
@@ -135,7 +136,7 @@ Board >> shouldAdjustShipPosition: aShip [
 		  (aShip position < 1 and: aShip lapsDone > 1)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Board >> snapToFinishTile: aShip [
 
 	aShip lapsDone > maxLap ifTrue: [ aShip moveToFirstTile ]

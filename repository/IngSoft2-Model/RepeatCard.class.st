@@ -1,10 +1,14 @@
+"
+repeat card class
+"
 Class {
-	#name : #RepeatCard,
-	#superclass : #Card,
-	#category : #'IngSoft2-Model'
+	#name : 'RepeatCard',
+	#superclass : 'Card',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #event }
+{ #category : 'event' }
 RepeatCard >> activate: aCardHandler withTarget: aTarget [
 
 	target:= aTarget.
@@ -13,7 +17,7 @@ RepeatCard >> activate: aCardHandler withTarget: aTarget [
 	
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 RepeatCard >> canPlayRightNow: theShipInTurn [
 
 	^true

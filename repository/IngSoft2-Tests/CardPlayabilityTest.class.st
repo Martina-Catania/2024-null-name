@@ -1,10 +1,11 @@
 Class {
-	#name : #CardPlayabilityTest,
-	#superclass : #CardsTest,
-	#category : #'IngSoft2-Tests'
+	#name : 'CardPlayabilityTest',
+	#superclass : 'CardsTest',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardPlayabilityTest >> testAnPermanentCardCanOnlyBePlayedDuringAShipsTurnInAGame [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
@@ -37,7 +38,7 @@ CardPlayabilityTest >> testAnPermanentCardCanOnlyBePlayedDuringAShipsTurnInAGame
 		withMessage: 'Ship cannot throw this card as its not his turn'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardPlayabilityTest >> testCannotPlayACardThatDoesNotBelongToAShip [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray |
@@ -63,7 +64,7 @@ CardPlayabilityTest >> testCannotPlayACardThatDoesNotBelongToAShip [
 		withMessage: 'Ship does not have that card'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardPlayabilityTest >> testCannotPlayACardThatDoesNotHaveASetTarget [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray |
@@ -92,7 +93,7 @@ CardPlayabilityTest >> testCannotPlayACardThatDoesNotHaveASetTarget [
 		withMessage: 'No target has been set'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardPlayabilityTest >> testCannotPlayACardThatHasInvalidTarget [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
@@ -126,7 +127,7 @@ CardPlayabilityTest >> testCannotPlayACardThatHasInvalidTarget [
 		withMessage: 'Target is not valid'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardPlayabilityTest >> testWhenCardsAreTakenFormDeckTheyFollowTheProbabilityDistribution [
 
 	| aDeck aCollectionOfCards |
@@ -142,7 +143,7 @@ CardPlayabilityTest >> testWhenCardsAreTakenFormDeckTheyFollowTheProbabilityDist
 		(aCollectionOfCards allSatisfy: [ :card | card = CancellationCard ])
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardPlayabilityTest >> testWhenGameIsStartedShipsHave2Cards [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray aDeck collectionOfCards|
@@ -169,7 +170,7 @@ CardPlayabilityTest >> testWhenGameIsStartedShipsHave2Cards [
 	self assert: (aGame shipCards: 'Juan') size equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardPlayabilityTest >> testWhenPlayingACardShipCardsDeckSizeChanges [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray aTarget |

@@ -1,10 +1,11 @@
 Class {
-	#name : #LoadedDieTest,
-	#superclass : #TestCase,
-	#category : #'IngSoft2-Tests'
+	#name : 'LoadedDieTest',
+	#superclass : 'TestCase',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 LoadedDieTest >> should: aErrorBlock raise: anErrorClass withMessage: anErrorMessage [
 
 	self
@@ -14,7 +15,7 @@ LoadedDieTest >> should: aErrorBlock raise: anErrorClass withMessage: anErrorMes
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 LoadedDieTest >> testALoadedDieCanThrowASequenceOfDifferentRolls [
 
 	| aDie |
@@ -26,7 +27,7 @@ LoadedDieTest >> testALoadedDieCanThrowASequenceOfDifferentRolls [
 	self assert: aDie throw equals: 4
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 LoadedDieTest >> testDieCanBeCreatedWithAnAmountOfFaces [
 
 	| aDie |
@@ -34,7 +35,7 @@ LoadedDieTest >> testDieCanBeCreatedWithAnAmountOfFaces [
 	self assert: aDie throw equals: 5
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 LoadedDieTest >> testDieCannotBeCreatedWithLessThanThreeFaces [
 
 	self
@@ -43,7 +44,7 @@ LoadedDieTest >> testDieCannotBeCreatedWithLessThanThreeFaces [
 		withMessage: 'Faces should be more than 2'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 LoadedDieTest >> testWhenDieIsThrownThenValueIsBetweenOneAndNumberedFaces [
 
 	| aDie |

@@ -1,10 +1,11 @@
 Class {
-	#name : #ShipTest,
-	#superclass : #TestCase,
-	#category : #'IngSoft2-Tests'
+	#name : 'ShipTest',
+	#superclass : 'TestCase',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMessage [
 
 	self
@@ -14,7 +15,7 @@ ShipTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMessa
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> testIfShipMovesIntoPositionBelowOneThenShipPositionIsOne [
 
 	| aShip |
@@ -24,7 +25,7 @@ ShipTest >> testIfShipMovesIntoPositionBelowOneThenShipPositionIsOne [
 	self assert: aShip position equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> testShipCannotBeCreatedWithNoName [
 
 	| aName |
@@ -35,7 +36,7 @@ ShipTest >> testShipCannotBeCreatedWithNoName [
 		withMessage: 'Ship cannot be created with no name'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> testShipsAlwaysHaveTheSameAmountOfShieldsSetAtTheStart [
 
 	| aShip1 aShip2 |
@@ -46,7 +47,7 @@ ShipTest >> testShipsAlwaysHaveTheSameAmountOfShieldsSetAtTheStart [
 	self assert: aShip2 amountOfShieldsActive equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> testShipsAmountOfShieldCanChangeDuringTime [
 
 	| aShip1 aShip2 |
@@ -59,7 +60,7 @@ ShipTest >> testShipsAmountOfShieldCanChangeDuringTime [
 	self assert: aShip2 amountOfShieldsActive equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> testShipsAmountOfShieldCannotBeNegative [
 
 	| aShip1 |
@@ -72,7 +73,7 @@ ShipTest >> testShipsAmountOfShieldCannotBeNegative [
 	self assert: aShip1 amountOfShieldsActive equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> testShipsHaveNames [
 
 	| aShip |
@@ -81,7 +82,7 @@ ShipTest >> testShipsHaveNames [
 	self assert: aShip shipName equals: 'Juan'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> testWhenCreatedShipIsInFirstPosition [
 
 	| aShip |
@@ -89,7 +90,7 @@ ShipTest >> testWhenCreatedShipIsInFirstPosition [
 	self assert: aShip position equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 ShipTest >> testWhenShipMovesCurrentPositionChanges [
 
 	| aShip |

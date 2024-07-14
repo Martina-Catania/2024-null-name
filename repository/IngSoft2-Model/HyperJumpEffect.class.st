@@ -2,17 +2,18 @@
 aS
 "
 Class {
-	#name : #HyperJumpEffect,
-	#superclass : #EffectOnOneShip,
+	#name : 'HyperJumpEffect',
+	#superclass : 'EffectOnOneShip',
 	#instVars : [
 		'parsecCollection',
 		'parsecNumber',
 		'boardParsecToTileRatio'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 HyperJumpEffect class >> withParsecArray: aParsecArray andLengthInTiles: lengthInTiles andLengthInParsecs: lengthInParsecs [
 
 	^ self new
@@ -21,7 +22,7 @@ HyperJumpEffect class >> withParsecArray: aParsecArray andLengthInTiles: lengthI
 		  andLengthInParsecs: lengthInParsecs
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 HyperJumpEffect >> affectAShip: aShip [
 
 	aShip moveTiles:
@@ -29,7 +30,7 @@ HyperJumpEffect >> affectAShip: aShip [
 			nominalValue asInteger * boardParsecToTileRatio
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 HyperJumpEffect >> currentParsec [
 
 	parsecNumber := parsecNumber < parsecCollection size
@@ -38,13 +39,13 @@ HyperJumpEffect >> currentParsec [
 	^ parsecNumber
 ]
 
-{ #category : #generators }
+{ #category : 'generators' }
 HyperJumpEffect >> generateParameters: aTileEffectCreator [
 
 	aTileEffectCreator generateHyperJumpParameters: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 HyperJumpEffect >> initializeWithParsecArray: aParsecArray andLengthInTiles: lengthInTiles andLengthInParsecs: lengthInParsecs [
 
 	parsecCollection := aParsecArray asSortedCollection: [ :a :b | a > b ].

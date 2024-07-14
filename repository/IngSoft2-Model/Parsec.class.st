@@ -2,18 +2,19 @@
 parsec class
 "
 Class {
-	#name : #Parsec,
-	#superclass : #Unit,
-	#category : #'IngSoft2-Model'
+	#name : 'Parsec',
+	#superclass : 'Unit',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Parsec class >> ratioInParsecs [
 
 	^ 1
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Parsec >> initializeWithNominalValue: aNominalValue [
 
 	nominalValue := aNominalValue.

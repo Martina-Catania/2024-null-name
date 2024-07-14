@@ -2,18 +2,19 @@
 associates effects and their generation probability
 "
 Class {
-	#name : #ProbabilityAssociation,
-	#superclass : #Object,
+	#name : 'ProbabilityAssociation',
+	#superclass : 'Object',
 	#instVars : [
 		'probability',
 		'lowerBound',
 		'upperBound',
 		'associatedObject'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 ProbabilityAssociation class >> associate: anObject withProbability: aProbability [
 
 	
@@ -23,13 +24,13 @@ ProbabilityAssociation class >> associate: anObject withProbability: aProbabilit
 	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ProbabilityAssociation >> associatedObject [
 
 	^ associatedObject value
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ProbabilityAssociation >> initializeWithAssociation: anObject withProbability: aProbability [
 
 	associatedObject := anObject.
@@ -39,19 +40,19 @@ ProbabilityAssociation >> initializeWithAssociation: anObject withProbability: a
 	upperBound := aProbability
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ProbabilityAssociation >> probability [
 
 	^ probability
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ProbabilityAssociation >> rangeIncludes: aNumber [
 
 	^  aNumber between: lowerBound  and: upperBound.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ProbabilityAssociation >> setRange: aLowerBound [
 
 	lowerBound := aLowerBound.

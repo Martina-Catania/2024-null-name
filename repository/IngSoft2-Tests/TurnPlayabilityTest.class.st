@@ -1,10 +1,11 @@
 Class {
-	#name : #TurnPlayabilityTest,
-	#superclass : #GameTest,
-	#category : #'IngSoft2-Tests'
+	#name : 'TurnPlayabilityTest',
+	#superclass : 'GameTest',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 TurnPlayabilityTest >> testAGameTurnCanBeSkipped [
 
 	| aGame aCollectionOfNames aWormHolePair aCollectionOfDie aTileArray |
@@ -26,7 +27,7 @@ TurnPlayabilityTest >> testAGameTurnCanBeSkipped [
 	self assert: aGame skipTurn equals: 'Juan skipped their turn'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TurnPlayabilityTest >> testWhenAShipFinishesLapThenPositionIsAdjustedAccordingly [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray|
@@ -57,7 +58,7 @@ TurnPlayabilityTest >> testWhenAShipFinishesLapThenPositionIsAdjustedAccordingly
 		equals: #( 1 4 ) asOrderedCollection.
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TurnPlayabilityTest >> testWhenFinishedTheEndingPositionOfTheWinnerEqualsTheFirstTileOfBoard [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray|
@@ -90,7 +91,7 @@ TurnPlayabilityTest >> testWhenFinishedTheEndingPositionOfTheWinnerEqualsTheFirs
 		equals: #( 1 2 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TurnPlayabilityTest >> testWhenShipHasNoShieldsLeftThenCannotPlayTurn [
 
 	| aGame aCollectionOfNames aWormHolePair aCollectionOfDie aTileArray|
@@ -123,7 +124,7 @@ TurnPlayabilityTest >> testWhenShipHasNoShieldsLeftThenCannotPlayTurn [
 	self assert: aGame playTurn equals: 'Pedro lost their turn'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TurnPlayabilityTest >> testWhenShipWithNoShieldLosesTwoTurnsThenCanPlayAgain [
 
 	| aGame aCollectionOfNames aWormHolePair aCollectionOfDie aTileArray |
@@ -165,7 +166,7 @@ TurnPlayabilityTest >> testWhenShipWithNoShieldLosesTwoTurnsThenCanPlayAgain [
 	self deny: aGame playTurn equals: 'Pedro lost their turn'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TurnPlayabilityTest >> testWhenShipWithNoShieldsCannotSkipTurn [
 
 	| aGame aCollectionOfNames aWormHolePair aCollectionOfDie aTileArray |
@@ -198,7 +199,7 @@ TurnPlayabilityTest >> testWhenShipWithNoShieldsCannotSkipTurn [
 	self assert: aGame skipTurn equals: 'Pedro lost their turn'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TurnPlayabilityTest >> testWhenTurnIsSkippedThenShipRestoresAllShields [
 
 	| aGame aCollectionOfNames aWormHolePair aCollectionOfDie aTileArray |

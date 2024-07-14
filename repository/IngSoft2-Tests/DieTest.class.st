@@ -1,10 +1,11 @@
 Class {
-	#name : #DieTest,
-	#superclass : #TestCase,
-	#category : #'IngSoft2-Tests'
+	#name : 'DieTest',
+	#superclass : 'TestCase',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 DieTest >> should: aErrorBlock raise: anErrorClass withMessage: anErrorMessage [
 
 	self
@@ -14,7 +15,7 @@ DieTest >> should: aErrorBlock raise: anErrorClass withMessage: anErrorMessage [
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testDiceHasNDieInIt [
 
 	| aDice |
@@ -25,7 +26,7 @@ DieTest >> testDiceHasNDieInIt [
 	self assert: aDice numberOfDie equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testDiceRequiresAtLeastOneDie [
 
 	self
@@ -34,7 +35,7 @@ DieTest >> testDiceRequiresAtLeastOneDie [
 		withMessage: 'There should be at least 1 Die'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 DieTest >> testDiceRollBetweenThesizeOfDiceAndTheSumOfTheDieFaces [
 
 	| aDice |
@@ -45,7 +46,7 @@ DieTest >> testDiceRollBetweenThesizeOfDiceAndTheSumOfTheDieFaces [
 	self assert: (aDice throw between: 3 and: 12)
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 DieTest >> testDieCanBeCreatedWithAnAmountOfFaces [
 
 	| aDie |
@@ -53,7 +54,7 @@ DieTest >> testDieCanBeCreatedWithAnAmountOfFaces [
 	self assert: (aDie throw between: 1 and: 3)
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 DieTest >> testDieCannotBeCreatedWithLessThanThreeFaces [
 
 	self
@@ -62,7 +63,7 @@ DieTest >> testDieCannotBeCreatedWithLessThanThreeFaces [
 		withMessage: 'Faces should be more than 2'
 ]
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 DieTest >> testWhenDieIsThrownThenValueIsBetweenOneAndNumberedFaces [
 
 	| aDie |

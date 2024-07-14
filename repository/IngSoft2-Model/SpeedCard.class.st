@@ -1,10 +1,14 @@
+"
+speed card class
+"
 Class {
-	#name : #SpeedCard,
-	#superclass : #Card,
-	#category : #'IngSoft2-Model'
+	#name : 'SpeedCard',
+	#superclass : 'Card',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #event }
+{ #category : 'event' }
 SpeedCard >> activate: aCardHandler withTarget: aTarget [
 
 	target := aTarget.
@@ -12,19 +16,19 @@ SpeedCard >> activate: aCardHandler withTarget: aTarget [
 	aCardHandler changeLastCardTo: self.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SpeedCard >> applyMovement [
 
 	^ 1
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SpeedCard >> canPlayRightNow: theShipInTurn [
 
 	^ theShipInTurn shipName = holder
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 SpeedCard >> shouldApplyOn: aTarget [
 
 	^ target objective  = aTarget

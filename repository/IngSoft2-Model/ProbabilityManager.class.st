@@ -2,12 +2,13 @@
 a
 "
 Class {
-	#name : #ProbabilityManager,
-	#superclass : #Object,
-	#category : #'IngSoft2-Model'
+	#name : 'ProbabilityManager',
+	#superclass : 'Object',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #generating }
+{ #category : 'generating' }
 ProbabilityManager >> elementAtRandom: probabilityElements [
 
 	| aRandomNumber aCardClass |
@@ -20,7 +21,7 @@ ProbabilityManager >> elementAtRandom: probabilityElements [
 	^ aCardClass
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 ProbabilityManager >> transformIntoProbabilityRanges: aProbabilityDistributionCollection [
 
 	| acc |

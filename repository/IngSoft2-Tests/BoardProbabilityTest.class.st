@@ -1,10 +1,11 @@
 Class {
-	#name : #BoardProbabilityTest,
-	#superclass : #BoardTest,
-	#category : #'IngSoft2-Tests'
+	#name : 'BoardProbabilityTest',
+	#superclass : 'BoardTest',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardProbabilityTest >> testTotalSumOfEffectsProbabilitiesIs100 [
 
 	| aProbabilityDistributionCollection |
@@ -21,7 +22,7 @@ BoardProbabilityTest >> testTotalSumOfEffectsProbabilitiesIs100 [
 		'Total efffect probabilities cannot be diferent from 100%'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardProbabilityTest >> testWhenABoardIsCreatedWithATileEffectCreatorItFollowsTheSetDistributionOfTileEffectCreator [
 
 	| aTileEffectsCreator aProbabilityDistributionCollection aBoard |
@@ -43,7 +44,7 @@ BoardProbabilityTest >> testWhenABoardIsCreatedWithATileEffectCreatorItFollowsTh
 	self assert: (aBoard allTileEffectsAmount at: NullEffect) equals: 8
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardProbabilityTest >> testWhenBoardIsCreatedTheAmountOfEffectsFollowTheCorrectDistribution [
 
 	| aBoard aPairOfLengths aWormHolePair aProbabilityDistributionCollection aTileEffectsCreator |
@@ -113,7 +114,7 @@ BoardProbabilityTest >> testWhenBoardIsCreatedTheAmountOfEffectsFollowTheCorrect
 		equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardProbabilityTest >> testWhenBoardIsCreatedTheAmountOfEffectsFollowTheCorrectDistributionVer2 [
 
 	| aBoard aPairOfLengths aWormHolePair aProbabilityDistributionCollection aTileEffectsCreator |
@@ -189,7 +190,7 @@ BoardProbabilityTest >> testWhenBoardIsCreatedTheAmountOfEffectsFollowTheCorrect
 		equals: 10
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardProbabilityTest >> testWhenBoardIsCreatedWithRandomizedEffectProbabilitiesItFollowsCorrespondingDistribution [
 	"
 	TEST FAILS WITH PHARO 12 CI

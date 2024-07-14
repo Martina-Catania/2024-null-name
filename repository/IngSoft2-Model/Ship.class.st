@@ -3,32 +3,33 @@
 - ship can update its own position
 "
 Class {
-	#name : #Ship,
-	#superclass : #Object,
+	#name : 'Ship',
+	#superclass : 'Object',
 	#instVars : [
 		'currentPosition',
 		'playerName',
 		'numberOfShields',
 		'currentLap'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Ship class >> createWithName: aName [
 
 	self isValid: aName.
 	^ self new initializeInTile: 1 withName: aName
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Ship class >> isValid: aName [
 
 	aName isEmpty ifTrue: [
 		Error signal: 'Ship cannot be created with no name' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Ship >> > anotherShip [
 
 	^ self lapsDone > anotherShip lapsDone or:
@@ -36,25 +37,25 @@ Ship >> > anotherShip [
 			   self position > anotherShip position)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Ship >> amountOfShieldsActive [
 
 	^ numberOfShields
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Ship >> healFullShields [
 
 	numberOfShields := self maxShields
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Ship >> inSamePositionAs: aShip [
 
 	^ currentPosition = aShip position and: self ~= aShip
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Ship >> initializeInTile: aPosition withName: aName [
 
 	currentPosition := aPosition.
@@ -63,31 +64,31 @@ Ship >> initializeInTile: aPosition withName: aName [
 	currentLap := 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Ship >> lapsDone [
 
 	^ currentLap
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Ship >> loseOneShield [
 
 	numberOfShields := numberOfShields - 1 max: 0.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Ship >> maxShields [
 
 	^ 3
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Ship >> modifyLap: aLapAmount [
 
 	currentLap := currentLap + aLapAmount
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Ship >> moveTiles: anAmountOfTiles [
 
 	currentPosition := currentLap = 1
@@ -96,19 +97,19 @@ Ship >> moveTiles: anAmountOfTiles [
 		                   ifFalse: [ currentPosition + anAmountOfTiles ]
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Ship >> moveToFirstTile [
 
 	currentPosition := 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Ship >> position [
 
 	^ currentPosition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Ship >> shipName [
 
 	^ playerName

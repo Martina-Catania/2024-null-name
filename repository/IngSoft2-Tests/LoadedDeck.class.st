@@ -1,20 +1,24 @@
+"
+loaded deck class
+"
 Class {
-	#name : #LoadedDeck,
-	#superclass : #TestObject,
+	#name : 'LoadedDeck',
+	#superclass : 'TestObject',
 	#instVars : [
 		'deck',
 		'currentCardPosition'
 	],
-	#category : #'IngSoft2-Tests'
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 LoadedDeck class >> withCards: aCollectionOfCards [
 
 	^ self new initalizeWithCards: aCollectionOfCards
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 LoadedDeck >> cardAtRandom [
 
 	currentCardPosition := currentCardPosition < deck size
@@ -24,7 +28,7 @@ LoadedDeck >> cardAtRandom [
 	^ deck at: currentCardPosition
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LoadedDeck >> initalizeWithCards: aCollectionOfCards [
 
 	deck := aCollectionOfCards.

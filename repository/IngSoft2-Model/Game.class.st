@@ -2,8 +2,8 @@
 Game Class
 "
 Class {
-	#name : #Game,
-	#superclass : #Object,
+	#name : 'Game',
+	#superclass : 'Object',
 	#instVars : [
 		'gameBoard',
 		'gameShips',
@@ -17,10 +17,11 @@ Class {
 	#classInstVars : [
 		'isFinished'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 Game class >> isValid: aBoard with: aNameCollection and: aDice [
 
 	aNameCollection isEmpty ifTrue: [
@@ -31,7 +32,7 @@ Game class >> isValid: aBoard with: aNameCollection and: aDice [
 		Error signal: 'Game cannot be started without at least one die' ]
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Game class >> withBoard: aBoard withShipNames: aNameCollection withDice: aDice [
 
 	| collectionOfCards |
@@ -48,7 +49,7 @@ Game class >> withBoard: aBoard withShipNames: aNameCollection withDice: aDice [
 		  (LoadedDeck withCards: collectionOfCards)
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Game class >> withBoard: aBoard withShipNames: aNameCollection withDice: aDice withDeck: aDeck [
 
 	self isValid: aBoard with: aNameCollection and: aDice.
@@ -59,14 +60,14 @@ Game class >> withBoard: aBoard withShipNames: aNameCollection withDice: aDice w
 		  withGameDeck: aDeck
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Game >> adjustShipPosition: aShip [
 
 	gameBoard adjustShipPosition: aShip.
 	gameBoard snapToFinishTile: aShip
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Game >> allShipAmountOfShields [
 
 	| shipShields |
@@ -78,7 +79,7 @@ Game >> allShipAmountOfShields [
 	^ shipShields
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Game >> allShipsPosition [
 
 	| shipPositions |
@@ -91,7 +92,7 @@ Game >> allShipsPosition [
 	^ shipPositions
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 Game >> applyEffectOnAllShips: anEffect [
 
 	anEffect affectAShipCollection: gameShips.
@@ -99,7 +100,7 @@ Game >> applyEffectOnAllShips: anEffect [
 		gameBoard adjustShipPosition: aShip.]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 Game >> applyEffectOnAllShipsButOne: anEffect triggerByShip: aShip [
 
 	anEffect affectAllShips: gameShips but: aShip.
@@ -107,14 +108,14 @@ Game >> applyEffectOnAllShipsButOne: anEffect triggerByShip: aShip [
 		gameBoard adjustShipPosition: anAffectedShip ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 Game >> applyEffectOnOneShip: anEffect triggeredBy: aShip [
 
 	anEffect affectAShip: aShip.
 	gameBoard adjustShipPosition: aShip
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 Game >> applyLastEffectOn: aTarget [
 
 	| aShip |
@@ -122,21 +123,21 @@ Game >> applyLastEffectOn: aTarget [
 	lastEffect applyOn: self activatedBy: aShip
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Game >> canPlayNextTurnOf [
 
 	self isFinished ifTrue: [
 		Error signal: 'Game is Over you cant Keep Playing' ].
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 Game >> giveCardToCurrentShip: aShip [
 
 	gameCardHandler
 		giveCardTo: aShip shipName.
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Game >> initializeGameWith: aBoard withShipNames: aNameCollection withDice: aDice withGameDeck: aDeck [
 
 	gameBoard := aBoard.
@@ -152,13 +153,13 @@ Game >> initializeGameWith: aBoard withShipNames: aNameCollection withDice: aDic
 	gameShips do: [ :ship | gameCardHandler startingCards: ship shipName ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Game >> isFinished [
 
 	^ gameShips anySatisfy: [ :aShip | gameBoard isInLastTile: aShip ]
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 Game >> playCard: aCard by: aShipName toTarget: aTarget [
 
 	| aCardToPlay |
@@ -177,7 +178,7 @@ Game >> playCard: aCard by: aShipName toTarget: aTarget [
 	gameCardHandler removeCardFromShipDeck: aCardToPlay
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Game >> playTurn [
 
 	| movement |
@@ -206,13 +207,13 @@ Game >> playTurn [
 	theShipInCurrentTurn := gameTurnHandler currentTurnShip
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Game >> shipCards: aShip [
 
 	^ gameCardHandler inPlayDeck select: [ :card | card holder = aShip ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Game >> shipRankings [
 
 	| sortedShips rankDictionary |
@@ -226,13 +227,13 @@ Game >> shipRankings [
 	^ rankDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Game >> shipWithName: aShipName [
 
 	^ gameShips detect: [ :ship | ship shipName = aShipName ]
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 Game >> skipTurn [
 
 	| skipedTurn |
@@ -251,14 +252,14 @@ Game >> skipTurn [
 	^ skipedTurn
 ]
 
-{ #category : #validating }
+{ #category : 'validating' }
 Game >> targetIsValid: aTarget [
 
 	(aTarget isValidWith: gameShips and: gameCardHandler) ifFalse: [
 		CardExeption signal: 'Target is not valid' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Game >> winnerName [
 
 	self isFinished ifFalse: [ ^ 'There is no winner yet' ].

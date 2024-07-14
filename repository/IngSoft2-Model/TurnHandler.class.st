@@ -2,8 +2,8 @@
 Turn Handler Class
 "
 Class {
-	#name : #TurnHandler,
-	#superclass : #Object,
+	#name : 'TurnHandler',
+	#superclass : 'Object',
 	#instVars : [
 		'turnsPerRound',
 		'ships',
@@ -11,16 +11,17 @@ Class {
 		'shipLostTurns',
 		'lostTurnPenalty'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 TurnHandler class >> withShips: anAmountOfTurns [
 
 	^ self new initializeWithShips: anAmountOfTurns
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 TurnHandler >> checkForShipsWithNoShield [
 
 	ships do: [ :ship |
@@ -28,13 +29,13 @@ TurnHandler >> checkForShipsWithNoShield [
 			ifTrue: [ shipLostTurns at: ship put: lostTurnPenalty ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TurnHandler >> currentTurnShip [
 
 	^ currentTurnShip
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TurnHandler >> initializeWithShips: aCollectionOfShips [
 
 	currentTurnShip := aCollectionOfShips first.
@@ -45,7 +46,7 @@ TurnHandler >> initializeWithShips: aCollectionOfShips [
 	ships do: [ :ship | shipLostTurns at: ship put: 0 ]
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 TurnHandler >> nextTurn [
 
 	| turnNumber |
@@ -56,7 +57,7 @@ TurnHandler >> nextTurn [
 	^ currentTurnShip
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TurnHandler >> turnShipCanPlayTurn [
 
 	| lostTurns |

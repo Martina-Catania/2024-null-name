@@ -2,8 +2,8 @@
 a
 "
 Class {
-	#name : #CardHandler,
-	#superclass : #Object,
+	#name : 'CardHandler',
+	#superclass : 'Object',
 	#instVars : [
 		'activeCards',
 		'game',
@@ -12,10 +12,11 @@ Class {
 		'gameDeck',
 		'coalitions'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 CardHandler class >> withDeck: aDeck andGame: aGame [
 
 	^ self new
@@ -23,62 +24,62 @@ CardHandler class >> withDeck: aDeck andGame: aGame [
 		  andGame: aGame
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 CardHandler >> activateCard: aCardToPlay withTarget: aTarget [
 
 	aCardToPlay activate: self withTarget: aTarget
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CardHandler >> addCoalition: aCoalition [
 
 	coalitions add: aCoalition
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CardHandler >> addToActiveCards: aCard [
 
 	activeCards add: aCard
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 CardHandler >> applyLastEffectOn: aTarget [
 
 	game applyLastEffectOn: aTarget
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CardHandler >> changeLastCardTo: aCard [
 
 	lastCardPlayed := aCard
 ]
 
-{ #category : #'argument validation' }
+{ #category : 'argument validation' }
 CardHandler >> checkTarget: aTarget [
 
 	^ activeCards anySatisfy: [ :card | aTarget = card ]
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 CardHandler >> deactivate: aTarget [
 
 	aTarget objective deactivate: self.
 
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 CardHandler >> giveCardTo: aShipName [
 
 	inPlayDeck add: (gameDeck cardAtRandom withHolder: aShipName)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CardHandler >> inPlayDeck [
 
 	^ inPlayDeck
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CardHandler >> initalizeWithDeck: aDeck andGame: aGame [
 
 	gameDeck := aDeck.
@@ -89,13 +90,13 @@ CardHandler >> initalizeWithDeck: aDeck andGame: aGame [
 	coalitions := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CardHandler >> lastCardPlayed [
 
 	^ lastCardPlayed
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CardHandler >> mercenariesOf: aShip [
 
 	| mercenaryCollection |
@@ -108,7 +109,7 @@ CardHandler >> mercenariesOf: aShip [
 	^ mercenaryCollection
 ]
 
-{ #category : #modifying }
+{ #category : 'modifying' }
 CardHandler >> movementCardsActivated: theShipInTurn [
 
 	^ ((activeCards select: [ :card |
@@ -116,7 +117,7 @@ CardHandler >> movementCardsActivated: theShipInTurn [
 		   :card | card applyMovement ]) max: 0
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CardHandler >> removeCardFromShipDeck: aCard [
 
 	inPlayDeck
@@ -124,7 +125,7 @@ CardHandler >> removeCardFromShipDeck: aCard [
 		ifAbsent: [ Error signal: 'Card was not found in Ship Deck' ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CardHandler >> removeCoalitionOf: aLeader and: aMercenary [
 
 	coalitions removeAllSuchThat: [ :coalition |
@@ -133,20 +134,20 @@ CardHandler >> removeCoalitionOf: aLeader and: aMercenary [
 			andMercenary: aMercenary objective) ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CardHandler >> removeFromActiveCard: aTarget [
 
 	activeCards remove: aTarget
 ]
 
-{ #category : #generating }
+{ #category : 'generating' }
 CardHandler >> startingCards: aShipName [
 
 	2 timesRepeat: [
 		inPlayDeck add: (gameDeck cardAtRandom withHolder: aShipName) ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CardHandler >> validateCard: aCard [
 
 	inPlayDeck
@@ -154,7 +155,7 @@ CardHandler >> validateCard: aCard [
 		ifNone: [ CardExeption signal: 'Ship does not have that card' ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CardHandler >> verifyCoalition: mercenaryShip [
 
 	(coalitions anySatisfy: [ :coalition |

@@ -3,15 +3,16 @@ Wormhole effect
 moves ship to another fixed position
 "
 Class {
-	#name : #WormholeEffect,
-	#superclass : #EffectOnOneShip,
+	#name : 'WormholeEffect',
+	#superclass : 'EffectOnOneShip',
 	#instVars : [
 		'wormholeDistance'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 WormholeEffect class >> fromPosition: firstPosition toPosition: lastPosition [
 
 	^ self new
@@ -19,13 +20,13 @@ WormholeEffect class >> fromPosition: firstPosition toPosition: lastPosition [
 		  toPosition: lastPosition
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 WormholeEffect >> affectAShip: aShip [
 
 	aShip moveTiles: wormholeDistance
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 WormholeEffect >> initializeInPosition: firstPosition toPosition: lastPosition [
 
 	wormholeDistance := lastPosition - firstPosition

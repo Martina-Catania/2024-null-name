@@ -1,10 +1,11 @@
 Class {
-	#name : #CancellationCard,
-	#superclass : #Card,
-	#category : #'IngSoft2-Model'
+	#name : 'CancellationCard',
+	#superclass : 'Card',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #event }
+{ #category : 'event' }
 CancellationCard >> activate: aCardHandler withTarget: aCard [
 
 	target := aCard.
@@ -15,7 +16,7 @@ CancellationCard >> activate: aCardHandler withTarget: aCard [
 	aCardHandler changeLastCardTo: self.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CancellationCard >> canPlayRightNow: theShipInTurn [
 
 	^ true

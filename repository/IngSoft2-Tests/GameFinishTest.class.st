@@ -1,10 +1,11 @@
 Class {
-	#name : #GameFinishTest,
-	#superclass : #GameTest,
-	#category : #'IngSoft2-Tests'
+	#name : 'GameFinishTest',
+	#superclass : 'GameTest',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameFinishTest >> testGameKnowTheWinnerShip [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray|
@@ -32,7 +33,7 @@ GameFinishTest >> testGameKnowTheWinnerShip [
 	self assert: aGame winnerName equals: 'Juan'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameFinishTest >> testIfGameIsNotFinishedThenIsFinishedIsTrue [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray |
@@ -61,7 +62,7 @@ GameFinishTest >> testIfGameIsNotFinishedThenIsFinishedIsTrue [
 	self assert: aGame isFinished
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameFinishTest >> testIfGameIsOngoingThereIsNoWinner [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray |
@@ -88,7 +89,7 @@ GameFinishTest >> testIfGameIsOngoingThereIsNoWinner [
 	self assert: aGame winnerName equals: 'There is no winner yet'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameFinishTest >> testIfThereIsAWinnerThereAreNoMoreMovements [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray|
@@ -120,7 +121,7 @@ GameFinishTest >> testIfThereIsAWinnerThereAreNoMoreMovements [
 		
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameFinishTest >> testWhenOneShipReachesTheEndGameIsFinished [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray |

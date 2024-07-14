@@ -1,45 +1,49 @@
+"
+ship coalition class
+"
 Class {
-	#name : #ShipCoalition,
-	#superclass : #Object,
+	#name : 'ShipCoalition',
+	#superclass : 'Object',
 	#instVars : [
 		'leader',
 		'mercenary'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 ShipCoalition class >> withLeader: aLeader andMercenary: aMercenary [
 
 	^ self new initializeWithLeader: aLeader andMercenary: aMercenary
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ShipCoalition >> = anotherCoalition [
 
 	^ self hash = anotherCoalition hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 ShipCoalition >> hasLeader: aShipName [
 
 	^ leader = aShipName
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 ShipCoalition >> hash [
 
 	^ leader hash + mercenary hash
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ShipCoalition >> initializeWithLeader: aLeader andMercenary: aMercenary [
 
 	leader := aLeader.
 	mercenary := aMercenary.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ShipCoalition >> mercenary [
 
 	^ mercenary

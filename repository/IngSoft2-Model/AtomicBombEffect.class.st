@@ -2,12 +2,13 @@
 atomic bomb effect
 "
 Class {
-	#name : #AtomicBombEffect,
-	#superclass : #EffectOnAllShips,
-	#category : #'IngSoft2-Model'
+	#name : 'AtomicBombEffect',
+	#superclass : 'EffectOnAllShips',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #applying }
+{ #category : 'applying' }
 AtomicBombEffect >> affectAShipCollection: aShipCollection [
 
 	aShipCollection do: [ :aShip |

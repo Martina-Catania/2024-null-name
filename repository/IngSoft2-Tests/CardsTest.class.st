@@ -1,10 +1,11 @@
 Class {
-	#name : #CardsTest,
-	#superclass : #TestCase,
-	#category : #'IngSoft2-Tests'
+	#name : 'CardsTest',
+	#superclass : 'TestCase',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMessage [
 
 	self
@@ -14,7 +15,7 @@ CardsTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMess
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testAShipCannotBeHiredByMoreThanOneShip [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
@@ -55,7 +56,7 @@ CardsTest >> testAShipCannotBeHiredByMoreThanOneShip [
 	self assert: (aGame shipCards: 'Pedro') size equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testTotalSumOfCardsProbabilitiesIs100 [
 
 	| aBoard aCollectionOfNames aCollectionOfDie aTileArray aDeck |
@@ -82,7 +83,7 @@ CardsTest >> testTotalSumOfCardsProbabilitiesIs100 [
 		'Total card probabilities cannot be diferent from 100%'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testWhenACancelationCardIsPlayedDeactivateTargetedCard [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
@@ -124,7 +125,7 @@ CardsTest >> testWhenACancelationCardIsPlayedDeactivateTargetedCard [
 	self assert: (aGame allShipsPosition at: 'Jose') first equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testWhenACancelationCardIsPlayedItCannotTargetANonexistentCard [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
@@ -167,7 +168,7 @@ CardsTest >> testWhenACancelationCardIsPlayedItCannotTargetANonexistentCard [
 	self assert: (aGame allShipsPosition at: 'Jose') first equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testWhenApplyingRedoCardLastCardIsPlayedAgain [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
@@ -211,7 +212,7 @@ CardsTest >> testWhenApplyingRedoCardLastCardIsPlayedAgain [
 		equals: #( 4 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testWhenApplyingRedoCardMultipleTimesApplyLastNonRedoCard [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
@@ -256,7 +257,7 @@ CardsTest >> testWhenApplyingRedoCardMultipleTimesApplyLastNonRedoCard [
 		equals: #( 4 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testWhenApplyingRepeatCardShipDoesNotMoveOutOfBounds [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
@@ -293,7 +294,7 @@ CardsTest >> testWhenApplyingRepeatCardShipDoesNotMoveOutOfBounds [
 		equals: #( 1 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testWhenMercenaryCardIsCancelledShipsCanBattleAgain [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
@@ -337,7 +338,7 @@ CardsTest >> testWhenMercenaryCardIsCancelledShipsCanBattleAgain [
 	self assert: (aGame allShipAmountOfShields at: 'Jose') equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsTest >> testWhenMercenaryCardIsPlayedAlliedShipsDontBattle [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray aPosition collectionOfCards aDeck aTarget |

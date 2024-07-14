@@ -2,18 +2,19 @@
 proof of concept
 "
 Class {
-	#name : #EffectOnAllShips,
-	#superclass : #Effect,
-	#category : #'IngSoft2-Model'
+	#name : 'EffectOnAllShips',
+	#superclass : 'Effect',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #applying }
+{ #category : 'applying' }
 EffectOnAllShips >> affectAShipCollection: aShipCollection [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 EffectOnAllShips >> applyOn: aGame activatedBy: aShip [
 
 	aGame applyEffectOnAllShips: self

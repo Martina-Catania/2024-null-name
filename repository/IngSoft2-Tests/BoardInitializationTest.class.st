@@ -1,10 +1,11 @@
 Class {
-	#name : #BoardInitializationTest,
-	#superclass : #BoardTest,
-	#category : #'IngSoft2-Tests'
+	#name : 'BoardInitializationTest',
+	#superclass : 'BoardTest',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardInitializationTest >> testBoardCannotBeInitializedWithLessThanOneParsec [
 
 	| aTileArray |
@@ -23,7 +24,7 @@ BoardInitializationTest >> testBoardCannotBeInitializedWithLessThanOneParsec [
 		withMessage: 'Board size in parsecs must be greater than 0'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardInitializationTest >> testBoardCannotBeInitializedWithLessThanOneTile [
 
 	| numTiles aTileArray|
@@ -42,7 +43,7 @@ BoardInitializationTest >> testBoardCannotBeInitializedWithLessThanOneTile [
 		withMessage: 'Board tiles must be greater than 0'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardInitializationTest >> testBoardCannotBeInitializedWithLessThanThreeLightYears [
 
 	| aTileArray |
@@ -61,7 +62,7 @@ BoardInitializationTest >> testBoardCannotBeInitializedWithLessThanThreeLightYea
 		withMessage: 'Not enough LightYears for a single Parsec'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardInitializationTest >> testBoardMustHaveAtLeast1Lap [
 
 	| aWormHolePair aTileArray|
@@ -79,7 +80,7 @@ BoardInitializationTest >> testBoardMustHaveAtLeast1Lap [
 		withMessage: 'Cannot play with less than 1 lap'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardInitializationTest >> testSpecialTilesCannotBeCreatedIfPositionsExceedBoardSize [
 
 	| aWormHolePair aProbabilityDistributionCollection aTileEffectsCreator |
@@ -104,7 +105,7 @@ BoardInitializationTest >> testSpecialTilesCannotBeCreatedIfPositionsExceedBoard
 		withMessage: 'Wormhole tiles are out of bounds'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardInitializationTest >> testWhenAssigningALengthInLightYearsParsecsAreCalculatedCorrectly [
 
 	| aBoard aTileArray aLightYearAmount |
@@ -122,7 +123,7 @@ BoardInitializationTest >> testWhenAssigningALengthInLightYearsParsecsAreCalcula
 	self assert: aBoard numOfParsecs equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardInitializationTest >> testWormHoleEffectCannotBeCreatedInFirstTileOfBoard [
 
 	| aWormHolePair aProbabilityDistributionCollection aTileEffectsCreator |

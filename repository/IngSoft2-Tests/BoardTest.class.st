@@ -1,10 +1,11 @@
 Class {
-	#name : #BoardTest,
-	#superclass : #TestCase,
-	#category : #'IngSoft2-Tests'
+	#name : 'BoardTest',
+	#superclass : 'TestCase',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 BoardTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMessage [
 
 	self
@@ -14,7 +15,7 @@ BoardTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMess
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardTest >> testBoardHasANumberOfLightYears [
 
 	| aBoard aTileArray aLightYearAmount |
@@ -32,7 +33,7 @@ BoardTest >> testBoardHasANumberOfLightYears [
 	self assert: aBoard numOfLightYears equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardTest >> testBoardHasANumberOfParsecs [
 
 	| aBoard aTileArray aParsecAmount |
@@ -50,7 +51,7 @@ BoardTest >> testBoardHasANumberOfParsecs [
 	self assert: aBoard numOfParsecs equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardTest >> testBoardHasANumberOfTiles [
 
 	| aBoard aTileArray aParsecAmount |
@@ -66,7 +67,7 @@ BoardTest >> testBoardHasANumberOfTiles [
 	self assert: aBoard numbOfTiles equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BoardTest >> testWormHoleTilePairsCannotOverlap [
 
 	| aWormHolePair aProbabilityDistributionCollection aTileEffectsCreator |

@@ -2,18 +2,19 @@
 Superclass for tile effects
 "
 Class {
-	#name : #Effect,
-	#superclass : #Object,
-	#category : #'IngSoft2-Model'
+	#name : 'Effect',
+	#superclass : 'Object',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #applying }
+{ #category : 'applying' }
 Effect >> applyOn: aGame activatedBy: aShip [
 
 	self subclassResponsibility.
 ]
 
-{ #category : #generators }
+{ #category : 'generators' }
 Effect >> generateParameters: aTileEffectCreator [
 
 	^ self

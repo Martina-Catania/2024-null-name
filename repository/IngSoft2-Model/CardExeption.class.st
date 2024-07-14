@@ -2,7 +2,8 @@
 exeption for card related errors
 "
 Class {
-	#name : #CardExeption,
-	#superclass : #Error,
-	#category : #'IngSoft2-Model'
+	#name : 'CardExeption',
+	#superclass : 'Error',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }

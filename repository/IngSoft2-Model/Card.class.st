@@ -2,77 +2,78 @@
 a
 "
 Class {
-	#name : #Card,
-	#superclass : #Object,
+	#name : 'Card',
+	#superclass : 'Object',
 	#instVars : [
 		'holder',
 		'target'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Card class >> withHolder: aShipName [
 
 	^ self new initalizeWithHolder: aShipName withTarget: NullTarget new
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 Card class >> withHolder: aShipName andTarget: aTarget [
 
 	^ self new initalizeWithHolder: aShipName withTarget: aTarget
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Card >> = aCard [
 
 	^ self hash = aCard hash and: self class = aCard class
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 Card >> activate: aCardHandler withTarget: aShipName [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Card >> applyMovement [
 
 	^ 0
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Card >> canPlayRightNow: theShipInTurn [
 
 	self subclassResponsibility
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 Card >> deactivate: aCardHandler [
 
 	^ self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Card >> hash [
 
 	^ holder hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Card >> holder [
 
 	^ holder
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Card >> initalizeWithHolder: aShipName withTarget: aTarget [
 
 	holder := aShipName.
 	target := aTarget.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 Card >> shouldApplyOn: aTarget [
 
 	^ true

@@ -2,12 +2,13 @@
 s
 "
 Class {
-	#name : #NullCard,
-	#superclass : #Card,
-	#category : #'IngSoft2-Model'
+	#name : 'NullCard',
+	#superclass : 'Card',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #event }
+{ #category : 'event' }
 NullCard >> activate: aCardHandler withTarget: aTarget [
 
 	target := aTarget.
@@ -15,7 +16,7 @@ NullCard >> activate: aCardHandler withTarget: aTarget [
 	^ self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 NullCard >> canPlayRightNow: theShipInTurn [
 
 	^true

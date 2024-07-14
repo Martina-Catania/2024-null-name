@@ -1,10 +1,11 @@
 Class {
-	#name : #CardsEffectTest,
-	#superclass : #CardsTest,
-	#category : #'IngSoft2-Tests'
+	#name : 'CardsEffectTest',
+	#superclass : 'CardsTest',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsEffectTest >> testWhenApplingRepeatCardLastEffectIsAppliedToTheTargetedShip [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
@@ -40,7 +41,7 @@ CardsEffectTest >> testWhenApplingRepeatCardLastEffectIsAppliedToTheTargetedShip
 	self assert: (aGame allShipsPosition at: 'Juan') equals: #(2 1) asOrderedCollection 
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsEffectTest >> testWhenOneAccelerationCardIsPlayedShipsMoveOneExtraTile [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
@@ -76,7 +77,7 @@ CardsEffectTest >> testWhenOneAccelerationCardIsPlayedShipsMoveOneExtraTile [
 	self assert: (aGame allShipsPosition at: 'Jose') first equals: 6
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsEffectTest >> testWhenOneSpeedCardIsPlayedTargetedShipMoveOneExtraTile [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget|
@@ -111,7 +112,7 @@ CardsEffectTest >> testWhenOneSpeedCardIsPlayedTargetedShipMoveOneExtraTile [
 	self assert: (aGame allShipsPosition at: 'Jose') first equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsEffectTest >> testWhenOneSpeedCardIsPlayedWhenShipBattelsItThrowResultIsIncreasedByOne [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget|
@@ -147,7 +148,7 @@ CardsEffectTest >> testWhenOneSpeedCardIsPlayedWhenShipBattelsItThrowResultIsInc
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CardsEffectTest >> testWhenShipWithMercenariesBattleAllOfThenThrowTheDice [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |

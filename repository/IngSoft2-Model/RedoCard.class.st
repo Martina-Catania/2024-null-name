@@ -1,10 +1,14 @@
+"
+redo card class
+"
 Class {
-	#name : #RedoCard,
-	#superclass : #Card,
-	#category : #'IngSoft2-Model'
+	#name : 'RedoCard',
+	#superclass : 'Card',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #event }
+{ #category : 'event' }
 RedoCard >> activate: aCardHandler withTarget: aTarget [
 
 	target := aTarget.
@@ -14,7 +18,7 @@ RedoCard >> activate: aCardHandler withTarget: aTarget [
 	
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 RedoCard >> canPlayRightNow: theShipInTurn [
 
 	^ true

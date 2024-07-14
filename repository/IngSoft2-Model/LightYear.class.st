@@ -2,18 +2,19 @@
 lightyear class
 "
 Class {
-	#name : #LightYear,
-	#superclass : #Unit,
-	#category : #'IngSoft2-Model'
+	#name : 'LightYear',
+	#superclass : 'Unit',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LightYear class >> ratioInParsecs [
 
 	^ 3
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LightYear >> initializeWithNominalValue: aNominalValue [
 
 	nominalValue := aNominalValue.

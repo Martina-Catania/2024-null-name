@@ -1,10 +1,11 @@
 Class {
-	#name : #BattleTest,
-	#superclass : #TestCase,
-	#category : #'IngSoft2-Tests'
+	#name : 'BattleTest',
+	#superclass : 'TestCase',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BattleTest >> testShipsCannotBattleInTheFirstTileOfABoard [
 
 	| aGame aCollectionOfNames aWormHoleTilePair aCollectionOfDie aTileArray aParsecAmount |
@@ -32,7 +33,7 @@ BattleTest >> testShipsCannotBattleInTheFirstTileOfABoard [
 	self assert: (aGame allShipAmountOfShields at: 'Pedro') equals: 3
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BattleTest >> testWhenShipInAGameLandsInATileWithAnotherShipThenTheyBattle [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray |
@@ -58,7 +59,7 @@ BattleTest >> testWhenShipInAGameLandsInATileWithAnotherShipThenTheyBattle [
 	self assert: (aGame allShipAmountOfShields at: 'Pedro') equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BattleTest >> testWhenShipLosesABattleThenGoBackToFirstTile [
 
 	| aGame aCollectionOfNames aWormHoleTilePair aCollectionOfDie aTileArray|

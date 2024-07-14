@@ -1,10 +1,11 @@
 Class {
-	#name : #GameTest,
-	#superclass : #TestCase,
-	#category : #'IngSoft2-Tests'
+	#name : 'GameTest',
+	#superclass : 'TestCase',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 GameTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMessage [
 
 	self
@@ -14,7 +15,7 @@ GameTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMessa
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameTest >> testAGameCanShowTheCurrentRanking [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray |
@@ -49,7 +50,7 @@ GameTest >> testAGameCanShowTheCurrentRanking [
 	self assert: (aGame shipRankings at: 3) shipName equals: 'Fran'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 GameTest >> testGameCanTellAllShipPositions [
 
 	| aGame aCollectionOfNames aCollectionOfDie aTileArray|

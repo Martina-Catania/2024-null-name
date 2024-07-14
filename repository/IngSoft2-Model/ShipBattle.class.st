@@ -2,16 +2,17 @@
 handles battles between ships and determines who participates
 "
 Class {
-	#name : #ShipBattle,
-	#superclass : #Object,
+	#name : 'ShipBattle',
+	#superclass : 'Object',
 	#instVars : [
 		'dice',
 		'ships'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #events }
+{ #category : 'events' }
 ShipBattle class >> withDice: aCollectionOfDice withShips: aCollectionOfShips [
 
 	^ self new
@@ -19,7 +20,7 @@ ShipBattle class >> withDice: aCollectionOfDice withShips: aCollectionOfShips [
 		  withDice: aCollectionOfDice
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ShipBattle >> checkShipBattle: currentTurnShip withCardHandler: gameCardHandler [
 
 	| shipsInSamePosition |
@@ -38,14 +39,14 @@ ShipBattle >> checkShipBattle: currentTurnShip withCardHandler: gameCardHandler 
 			with: gameCardHandler ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 ShipBattle >> initializeWithShips: aCollectionOfShips withDice: aCollectionOfDice [
 
 	dice := aCollectionOfDice.
 	ships := aCollectionOfShips.
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 ShipBattle >> resolveBattleBetween: aShip and: anotherShip with: aCardHandler [
 
 	| aShipDiceRoll anotherShipDiceRoll loserShipArmy aShipArmy anotherShipArmy |
@@ -73,13 +74,13 @@ ShipBattle >> resolveBattleBetween: aShip and: anotherShip with: aCardHandler [
 		aShip moveToFirstTile ]
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 ShipBattle >> shipWithName: aShipName [
 
 	^ ships detect: [ :ship | ship shipName = aShipName ]
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 ShipBattle >> shipsNames: aShipsNameCollection [
 	
 	^ aShipsNameCollection collect: [ :shipName | self shipWithName: shipName  ].

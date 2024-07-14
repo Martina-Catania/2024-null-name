@@ -2,22 +2,23 @@
 moon walk effect class
 "
 Class {
-	#name : #MoonWalkEffect,
-	#superclass : #EffectOnAllShipsButOne,
+	#name : 'MoonWalkEffect',
+	#superclass : 'EffectOnAllShipsButOne',
 	#instVars : [
 		'moonWalkDistance'
 	],
-	#category : #'IngSoft2-Model'
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 MoonWalkEffect class >> isValid: aDistance [
 
 	aDistance strictlyPositive ifFalse: [
 		Error signal: 'Moonwalk distance must be strictly positive' ]
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 MoonWalkEffect class >> withMoonwalkDistance: aDistance [
 	
 	self isValid:aDistance.
@@ -25,7 +26,7 @@ MoonWalkEffect class >> withMoonwalkDistance: aDistance [
 	^ self new initializeWithMoonwalkDistance: aDistance 
 ]
 
-{ #category : #applying }
+{ #category : 'applying' }
 MoonWalkEffect >> affectAllShips: aShipCollection but: currentTurnShip [
 
 	aShipCollection
@@ -33,13 +34,13 @@ MoonWalkEffect >> affectAllShips: aShipCollection but: currentTurnShip [
 		thenCollect: [ :aShip | aShip moveTiles: moonWalkDistance negated ]
 ]
 
-{ #category : #generators }
+{ #category : 'generators' }
 MoonWalkEffect >> generateParameters: aTileEffectCreator [
 
 	aTileEffectCreator generateMoonWalkParameters: self
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 MoonWalkEffect >> initializeWithMoonwalkDistance: aDistance [
 
 	moonWalkDistance := aDistance

@@ -2,7 +2,8 @@
 Turn Exeption
 "
 Class {
-	#name : #TurnExeption,
-	#superclass : #Error,
-	#category : #'IngSoft2-Model'
+	#name : 'TurnExeption',
+	#superclass : 'Error',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }

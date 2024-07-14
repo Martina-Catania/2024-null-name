@@ -2,12 +2,13 @@
 null pattern implementation
 "
 Class {
-	#name : #NullEffect,
-	#superclass : #Effect,
-	#category : #'IngSoft2-Model'
+	#name : 'NullEffect',
+	#superclass : 'Effect',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #applying }
+{ #category : 'applying' }
 NullEffect >> applyOn: aGame activatedBy: aShip [
 
 	^ self

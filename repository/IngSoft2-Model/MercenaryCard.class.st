@@ -1,10 +1,14 @@
+"
+mercenary card class
+"
 Class {
-	#name : #MercenaryCard,
-	#superclass : #Card,
-	#category : #'IngSoft2-Model'
+	#name : 'MercenaryCard',
+	#superclass : 'Card',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #event }
+{ #category : 'event' }
 MercenaryCard >> activate: aCardHandler withTarget: aTarget [
 
 	target := aTarget.
@@ -16,13 +20,13 @@ MercenaryCard >> activate: aCardHandler withTarget: aTarget [
 	aCardHandler changeLastCardTo: self.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 MercenaryCard >> canPlayRightNow: theShipInTurn [
 
 	^ theShipInTurn shipName = holder
 ]
 
-{ #category : #event }
+{ #category : 'event' }
 MercenaryCard >> deactivate: aCardHandler [
 
 	aCardHandler removeCoalitionOf: holder and: target

@@ -1,10 +1,11 @@
 Class {
-	#name : #AccelerationCard,
-	#superclass : #Card,
-	#category : #'IngSoft2-Model'
+	#name : 'AccelerationCard',
+	#superclass : 'Card',
+	#category : 'IngSoft2-Model',
+	#package : 'IngSoft2-Model'
 }
 
-{ #category : #event }
+{ #category : 'event' }
 AccelerationCard >> activate: aCardHandler withTarget: aShipName [
 	
 	
@@ -13,13 +14,13 @@ AccelerationCard >> activate: aCardHandler withTarget: aShipName [
 	aCardHandler changeLastCardTo: self.
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AccelerationCard >> applyMovement [
 
 	^ 1
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 AccelerationCard >> canPlayRightNow: theShipInTurn [
 
 	^ theShipInTurn shipName = holder

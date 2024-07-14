@@ -1,10 +1,11 @@
 Class {
-	#name : #EffectsTest,
-	#superclass : #TestCase,
-	#category : #'IngSoft2-Tests'
+	#name : 'EffectsTest',
+	#superclass : 'TestCase',
+	#category : 'IngSoft2-Tests',
+	#package : 'IngSoft2-Tests'
 }
 
-{ #category : #asserting }
+{ #category : 'asserting' }
 EffectsTest >> should: aErrorBlock raise: anErrorClass withMessage: anErrorMessage [
 
 	self
@@ -14,7 +15,7 @@ EffectsTest >> should: aErrorBlock raise: anErrorClass withMessage: anErrorMessa
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testBlackHoleEffectCannotBeAplliedAfterGameIsFinished [
 
 	| aBoard aShipName aGame aTileArray|
@@ -46,7 +47,7 @@ EffectsTest >> testBlackHoleEffectCannotBeAplliedAfterGameIsFinished [
 		equals: #( 1 2 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testMoonWalkDistanceCannotBeSmallerThanZero [
 	
 	self should: [ MoonWalkEffect withMoonwalkDistance: -3 ] raise: Error withMessage: 'Moonwalk distance must be strictly positive'
@@ -54,7 +55,7 @@ EffectsTest >> testMoonWalkDistanceCannotBeSmallerThanZero [
 	
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplying2DifferentHyperJumpEffectsShipsMoveTheBiggestAmountOfParsecsInArray [
 
 	| aBoard aShipName aGame aParsecArray aWormHolePair aProbabilityDistributionCollection aTileEffectsCreator |
@@ -124,7 +125,7 @@ EffectsTest >> testWhenApplying2DifferentHyperJumpEffectsShipsMoveTheBiggestAmou
 		equals: #( 98 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingAtomicBombEffectAllShipsMoveBackToFirstTileOfTheirCurrentLap [
 
 	| aBoard aShipName aGame aTileArray |
@@ -163,7 +164,7 @@ EffectsTest >> testWhenApplyingAtomicBombEffectAllShipsMoveBackToFirstTileOfThei
 		equals: #( 1 2 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingBlackHoleEffectShipMoves4SpacesBack [
 
 	| aBoard aShipName aGame aTileArray |
@@ -193,7 +194,7 @@ EffectsTest >> testWhenApplyingBlackHoleEffectShipMoves4SpacesBack [
 		equals: #( 4 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingBlackHoleShipNotOnLap1CanMoveBelowFirstTilePosition [
 
 	| aBoard aShipName aGame aTileArray |
@@ -225,7 +226,7 @@ EffectsTest >> testWhenApplyingBlackHoleShipNotOnLap1CanMoveBelowFirstTilePositi
 		equals: #( 9 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingHyperJumpEffectShipCanMoveAVariableAmountOfLightYears [
 
 	| aBoard aShipName aGame aLightYearAndParsecArray aTileArray |
@@ -263,7 +264,7 @@ EffectsTest >> testWhenApplyingHyperJumpEffectShipCanMoveAVariableAmountOfLightY
 		equals: #( 13 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingHyperJumpEffectShipMovesAVariableParsecDistance [
 
 	| aBoard aShipName aGame aParsecArray aTileArray |
@@ -303,7 +304,7 @@ EffectsTest >> testWhenApplyingHyperJumpEffectShipMovesAVariableParsecDistance [
 		equals: #( 13 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingHyperJumpEffectShipOnlyMoveWholeDistances [
 
 	| aBoard aShipName aGame aLightYearAndParsecArray aTileArray |
@@ -341,7 +342,7 @@ EffectsTest >> testWhenApplyingHyperJumpEffectShipOnlyMoveWholeDistances [
 		equals: #( 9 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingHyperJumpRepeatedlyThenDistanceMovedChanges [
 
 	| aBoard aShipName aTileArray aGame aParsecArray |
@@ -389,7 +390,7 @@ EffectsTest >> testWhenApplyingHyperJumpRepeatedlyThenDistanceMovedChanges [
 		equals: #( 2 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingHyperSpaceJumpEffectShipLosesAShield [
 
 	| aBoard aShipName aTileArray aGame |
@@ -416,7 +417,7 @@ EffectsTest >> testWhenApplyingHyperSpaceJumpEffectShipLosesAShield [
 	self assert: (aGame allShipAmountOfShields at: 'Juan') equals: 2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingHyperSpaceJumpEffectShipMoves4SpacesForward [
 
 	| aBoard aShipName aTileArray aGame |
@@ -445,7 +446,7 @@ EffectsTest >> testWhenApplyingHyperSpaceJumpEffectShipMoves4SpacesForward [
 		equals: #( 8 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingMoonWalkEffectAllShipsButTriggeringShipMoveAVariableDistance [
 
 	| aBoard aShipName aGame aTileArray |
@@ -480,7 +481,7 @@ EffectsTest >> testWhenApplyingMoonWalkEffectAllShipsButTriggeringShipMoveAVaria
 		equals: #( 5 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingMoonWalkEffectShipLapsBehaveCorrectly [
 
 	| aBoard aShipName aGame aTileArray|
@@ -523,7 +524,7 @@ EffectsTest >> testWhenApplyingMoonWalkEffectShipLapsBehaveCorrectly [
 		equals: #( 1 1 ) asOrderedCollection
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 EffectsTest >> testWhenApplyingWormholeEffectOnShipMoveAccordingly [
 
 	| aGame aBoard aWormHolePair aShipName aTileArray |
