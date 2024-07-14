@@ -100,15 +100,15 @@ Game >> applyEffectOnAllShips: anEffect [
 		gameBoard adjustShipPosition: aShip.]
 ]
 
-{ #category : 'as yet unclassified' }
-Game >> applyEffectOnAllShipsButOne: anEffect triggerByShip: aShip [
+{ #category : 'event' }
+Game >> applyEffectOnAllShipsButOne: anEffect triggeredBy: aShip [
 
 	anEffect affectAllShips: gameShips but: aShip.
 	gameShips do: [ :anAffectedShip |
 		gameBoard adjustShipPosition: anAffectedShip ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'event' }
 Game >> applyEffectOnOneShip: anEffect triggeredBy: aShip [
 
 	anEffect affectAShip: aShip.

@@ -17,5 +17,5 @@ EffectOnAllShipsButOne >> affectAllShips: aCollection but: aShip [
 { #category : 'applying' }
 EffectOnAllShipsButOne >> applyOn: aGame activatedBy: aShip [
 
-	aGame applyEffectOnAllShipsButOne: self triggerByShip: aShip.
+	aGame applyEffectOnAllShipsButOne: self triggeredBy: aShip.
 ]
