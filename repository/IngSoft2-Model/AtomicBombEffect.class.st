@@ -1,5 +1,5 @@
 "
-atomic bomb effect
+resets every ship to the starting position and makes them lose a shield.
 "
 Class {
 	#name : 'AtomicBombEffect',

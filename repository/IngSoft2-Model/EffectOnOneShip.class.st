@@ -1,5 +1,6 @@
 "
-proof of concept
+superclass for effects that apply on one ship
+leaves system open for extension
 "
 Class {
 	#name : 'EffectOnOneShip',

@@ -1,5 +1,6 @@
 "
-aS
+moves ship a variable amount of parsecs
+can move ship forwards or backwards
 "
 Class {
 	#name : 'HyperJumpEffect',

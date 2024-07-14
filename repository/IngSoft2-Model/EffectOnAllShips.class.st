@@ -1,5 +1,6 @@
 "
-proof of concept
+superclass for all effects that apply on all ships
+system remains open for extension (ex: an effect that moves all ships forward would be implemented here)
 "
 Class {
 	#name : 'EffectOnAllShips',

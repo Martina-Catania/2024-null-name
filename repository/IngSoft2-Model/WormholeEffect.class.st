@@ -1,6 +1,5 @@
 "
-Wormhole effect
-moves ship to another fixed position
+moves ship to another fixed tile
 "
 Class {
 	#name : 'WormholeEffect',

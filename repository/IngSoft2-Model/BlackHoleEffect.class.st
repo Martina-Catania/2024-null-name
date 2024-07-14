@@ -1,5 +1,5 @@
 "
-black hole effect
+moves ship 4 tiles back
 "
 Class {
 	#name : 'BlackHoleEffect',

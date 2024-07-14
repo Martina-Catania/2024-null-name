@@ -1,9 +1,9 @@
 "
-a
+makes game add a card to the triggering ship's hand
 "
 Class {
 	#name : 'CardGeneratorEffect',
-	#superclass : 'Effect',
+	#superclass : 'EffectOnGame',
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
 }

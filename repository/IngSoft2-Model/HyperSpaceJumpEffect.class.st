@@ -1,5 +1,5 @@
 "
-HyperSpaceJump class
+moves ship 4 tiles forward but makes them lose a shield
 "
 Class {
 	#name : 'HyperSpaceJumpEffect',

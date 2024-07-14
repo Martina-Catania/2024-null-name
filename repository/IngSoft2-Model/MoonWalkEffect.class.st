@@ -1,9 +1,9 @@
 "
-moon walk effect class
+moves all ships but the one who triggered it a predefined amount of tiles back
 "
 Class {
 	#name : 'MoonWalkEffect',
-	#superclass : 'EffectOnAllShipsButOne',
+	#superclass : 'EffectOnGroupOfShips',
 	#instVars : [
 		'moonWalkDistance'
 	],
