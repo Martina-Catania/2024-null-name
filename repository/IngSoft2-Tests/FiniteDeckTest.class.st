@@ -1,19 +1,9 @@
 Class {
 	#name : 'FiniteDeckTest',
-	#superclass : 'TestCase',
+	#superclass : 'CardsTest',
 	#category : 'IngSoft2-Tests',
 	#package : 'IngSoft2-Tests'
 }
-
-{ #category : 'tests' }
-FiniteDeckTest >> should: anErrorBlock raise: exceptionClass withMessage: anErrorMessage [
-
-	self
-		should: anErrorBlock
-		raise: exceptionClass
-		withExceptionDo: [ :error |
-		self assert: error messageText equals: anErrorMessage ]
-]
 
 { #category : 'tests' }
 FiniteDeckTest >> testFiniteDeckCannotHaveLessThanOneCard [

@@ -17,19 +17,14 @@ SpeedCard >> activate: aCardHandler withTarget: aTarget [
 ]
 
 { #category : 'comparing' }
-SpeedCard >> applyMovement [
+SpeedCard >> applyMovementOn: aShip [
 
-	^ 1
+	aShip shipName = target objective ifTrue: [ ^ 1 ].
+	^ 0
 ]
 
 { #category : 'comparing' }
 SpeedCard >> canPlayRightNow: theShipInTurn [
 
 	^ theShipInTurn shipName = holder
-]
-
-{ #category : 'comparing' }
-SpeedCard >> shouldApplyOn: aTarget [
-
-	^ target objective  = aTarget
 ]

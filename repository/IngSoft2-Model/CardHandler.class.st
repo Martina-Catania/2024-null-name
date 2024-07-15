@@ -120,9 +120,11 @@ CardHandler >> mercenariesOf: aShip [
 { #category : 'modifying' }
 CardHandler >> movementCardsActivated: theShipInTurn [
 
-	^ ((activeCards select: [ :card |
-		    card shouldApplyOn: theShipInTurn shipName ]) sumNumbers: [
-		   :card | card applyMovement ]) max: 0
+	| temp |
+	temp := 0.
+	activeCards do: [ :card |
+		   temp := temp + (card applyMovementOn: theShipInTurn) ].
+	^ temp max: 0
 ]
 
 { #category : 'comparing' }

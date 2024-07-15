@@ -14,7 +14,7 @@ AccelerationCard >> activate: aCardHandler withTarget: aShipName [
 ]
 
 { #category : 'comparing' }
-AccelerationCard >> applyMovement [
+AccelerationCard >> applyMovementOn: aShip [
 
 	^ 1
 ]

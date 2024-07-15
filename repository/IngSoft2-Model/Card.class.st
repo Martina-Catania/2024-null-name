@@ -37,7 +37,7 @@ Card >> activate: aCardHandler withTarget: aShipName [
 ]
 
 { #category : 'comparing' }
-Card >> applyMovement [
+Card >> applyMovementOn: aShip [
 
 	^ 0
 ]
@@ -71,10 +71,4 @@ Card >> initalizeWithHolder: aShipName withTarget: aTarget [
 
 	holder := aShipName.
 	target := aTarget.
-]
-
-{ #category : 'comparing' }
-Card >> shouldApplyOn: aTarget [
-
-	^ true
 ]
