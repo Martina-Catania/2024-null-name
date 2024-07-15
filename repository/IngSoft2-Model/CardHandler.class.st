@@ -75,11 +75,6 @@ CardHandler >> deactivate: aTarget [
 ]
 
 { #category : 'modifying' }
-CardHandler >> discardCard: aNullCard [ 
-	self shouldBeImplemented.
-]
-
-{ #category : 'modifying' }
 CardHandler >> giveCardTo: aShipName [
 
 	gameDeck isEmpty ifTrue: [ self shuffleDiscarded ].
