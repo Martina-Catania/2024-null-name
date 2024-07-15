@@ -11,7 +11,7 @@ Class {
 	#package : 'IngSoft2-Model'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'class initialization' }
 Target class >> withObjective: anObjective [
 
 	^ self new initializeWithObjective: anObjective

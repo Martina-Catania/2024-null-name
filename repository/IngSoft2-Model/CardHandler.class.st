@@ -37,6 +37,12 @@ CardHandler >> addCoalition: aCoalition [
 	coalitions add: aCoalition
 ]
 
+{ #category : 'adding' }
+CardHandler >> addShieldTo: aShipName [
+
+	(game shipWithName: aShipName) defend
+]
+
 { #category : 'comparing' }
 CardHandler >> addToActiveCards: aCard [
 

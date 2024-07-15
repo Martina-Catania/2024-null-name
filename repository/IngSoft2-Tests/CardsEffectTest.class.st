@@ -294,6 +294,70 @@ CardsEffectTest >> testWhenApplyingRepeatCardShipDoesNotMoveOutOfBounds [
 ]
 
 { #category : 'tests' }
+CardsEffectTest >> testWhenDefendCardIsPlayedHealOneShield [
+
+	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
+	aTileArray := OrderedCollection new.
+	3 timesRepeat: [ aTileArray add: NullEffect new ].
+	aTileArray at: 2 put: AtomicBombEffect new.
+
+	aBoard := Board
+		          withTileEffectCollection: aTileArray
+		          withLengthInUnits: (Parsec withNominalValue: 10)
+		          withAmountOfLaps: 1.
+	aCollectionOfNames := OrderedCollection with: 'Juan' with: 'Jose'.
+	aCollectionOfDie := OrderedCollection with:
+		                    (SequenceDie withSequence: #( 1 )).
+
+	collectionOfCards := OrderedCollection new.
+	10 timesRepeat: [ collectionOfCards add: DefendCard ].
+	aDeck := FiniteDeck withCards: collectionOfCards.
+
+	aGame := Game
+		         withBoard: aBoard
+		         withShipNames: aCollectionOfNames
+		         withDice: (Dice with: aCollectionOfDie)
+		         withDeck: aDeck.
+
+	aGame playTurn.
+	aTarget := ShipTarget withObjective: 'Juan'.
+	aGame playCard: DefendCard by: 'Juan' toTarget: aTarget.
+
+	self assert: (aGame allShipAmountOfShields at: 'Juan') equals: 3
+]
+
+{ #category : 'tests' }
+CardsEffectTest >> testWhenDefendCardIsPlayedOnFullShieldsShipIncreaseMaxShieldCapacity [
+
+	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
+	aTileArray := OrderedCollection new.
+	3 timesRepeat: [ aTileArray add: NullEffect new ].
+
+	aBoard := Board
+		          withTileEffectCollection: aTileArray
+		          withLengthInUnits: (Parsec withNominalValue: 10)
+		          withAmountOfLaps: 1.
+	aCollectionOfNames := OrderedCollection with: 'Juan' with: 'Jose'.
+	aCollectionOfDie := OrderedCollection with:
+		                    (SequenceDie withSequence: #( 1 )).
+
+	collectionOfCards := OrderedCollection new.
+	10 timesRepeat: [ collectionOfCards add: DefendCard ].
+	aDeck := FiniteDeck withCards: collectionOfCards.
+
+	aGame := Game
+		         withBoard: aBoard
+		         withShipNames: aCollectionOfNames
+		         withDice: (Dice with: aCollectionOfDie)
+		         withDeck: aDeck.
+
+	aTarget := ShipTarget withObjective: 'Juan'.
+	aGame playCard: DefendCard by: 'Juan' toTarget: aTarget.
+
+	self assert: (aGame allShipAmountOfShields at: 'Juan') equals: 4
+]
+
+{ #category : 'tests' }
 CardsEffectTest >> testWhenMercenaryCardIsCancelledShipsCanBattleAgain [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
