@@ -1,30 +1,19 @@
 "
-speed card class
++1 to target ship's dice throws
 "
 Class {
 	#name : 'SpeedCard',
-	#superclass : 'Card',
+	#superclass : 'PermanentCard',
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
 }
 
-{ #category : 'event' }
-SpeedCard >> activate: aCardHandler withTarget: aTarget [
-
-	target := aTarget.
-	aCardHandler addToActiveCards: self.
-	aCardHandler changeLastCardTo: self.
-]
-
 { #category : 'comparing' }
 SpeedCard >> applyMovementOn: aShip [
 
-	aShip shipName = target objective ifTrue: [ ^ 1 ].
-	^ 0
-]
-
-{ #category : 'comparing' }
-SpeedCard >> canPlayRightNow: theShipInTurn [
-
-	^ theShipInTurn shipName = holder
+	| movementBuff |
+	movementBuff := aShip shipName = target objective
+		                ifTrue: [ 1 ]
+		                ifFalse: [ 0 ].
+	^ movementBuff
 ]

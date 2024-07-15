@@ -1,26 +1,15 @@
+"
++1 to every ship's dice throws
+"
 Class {
 	#name : 'AccelerationCard',
-	#superclass : 'Card',
+	#superclass : 'PermanentCard',
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
 }
-
-{ #category : 'event' }
-AccelerationCard >> activate: aCardHandler withTarget: aShipName [
-	
-	target := aShipName.
-	aCardHandler addToActiveCards: self.
-	aCardHandler changeLastCardTo: self.
-]
 
 { #category : 'comparing' }
 AccelerationCard >> applyMovementOn: aShip [
 
 	^ 1
-]
-
-{ #category : 'comparing' }
-AccelerationCard >> canPlayRightNow: theShipInTurn [
-
-	^ theShipInTurn shipName = holder
 ]

@@ -1,20 +1,16 @@
+"
+add one shield to target ship, if it has full shields increase max shield amount
+"
 Class {
 	#name : 'DefendCard',
-	#superclass : 'Card',
+	#superclass : 'InstantCard',
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
 }
 
 { #category : 'event' }
-DefendCard >> activate: aCardHandler withTarget: aShipName [
+DefendCard >> activate: aCardHandler withTarget: aShip [
 	
-	aCardHandler addShieldTo: aShipName objective.
-	target := aShipName.
-	aCardHandler changeLastCardTo: self.
-]
-
-{ #category : 'comparing' }
-DefendCard >> canPlayRightNow: theShipInTurn [
-
-	^ true
+	super activate: aCardHandler withTarget: aShip.
+	aCardHandler addShieldTo: aShip objective.
 ]

@@ -1,9 +1,9 @@
 "
-redo card class
+replay last played card (can use a new target)
 "
 Class {
 	#name : 'RedoCard',
-	#superclass : 'Card',
+	#superclass : 'InstantCard',
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
 }
@@ -16,10 +16,4 @@ RedoCard >> activate: aCardHandler withTarget: aTarget [
 		activateCard: (aCardHandler lastCardPlayed class withHolder: holder)
 		withTarget: aTarget.
 	aCardHandler discard: self
-]
-
-{ #category : 'comparing' }
-RedoCard >> canPlayRightNow: theShipInTurn [
-
-	^ true
 ]

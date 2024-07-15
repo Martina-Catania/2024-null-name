@@ -1,5 +1,5 @@
 "
-s
+null pattern
 "
 Class {
 	#name : 'NullCard',
@@ -14,7 +14,6 @@ NullCard >> activate: aCardHandler withTarget: aTarget [
 	target := aTarget.
 	aCardHandler changeLastCardTo: self.
 	aCardHandler discard: self.
-	^ self
 ]
 
 { #category : 'comparing' }

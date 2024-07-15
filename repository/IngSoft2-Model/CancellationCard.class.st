@@ -1,6 +1,9 @@
+"
+cancel an active permanent card
+"
 Class {
 	#name : 'CancellationCard',
-	#superclass : 'Card',
+	#superclass : 'InstantCard',
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
 }
@@ -8,15 +11,7 @@ Class {
 { #category : 'event' }
 CancellationCard >> activate: aCardHandler withTarget: aCard [
 
-	target := aCard.
+	super activate: aCardHandler withTarget: aCard.
 	aCardHandler deactivate: aCard.
 	aCardHandler removeFromActiveCard: target objective.
-	aCardHandler changeLastCardTo: self.
-	aCardHandler discard: self.
-]
-
-{ #category : 'comparing' }
-CancellationCard >> canPlayRightNow: theShipInTurn [
-
-	^ true
 ]

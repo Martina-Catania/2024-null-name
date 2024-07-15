@@ -1,9 +1,9 @@
 "
-repeat card class
+repeat last board effect applied (excluding null effect)
 "
 Class {
 	#name : 'RepeatCard',
-	#superclass : 'Card',
+	#superclass : 'InstantCard',
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
 }
@@ -11,14 +11,6 @@ Class {
 { #category : 'event' }
 RepeatCard >> activate: aCardHandler withTarget: aTarget [
 
-	target := aTarget.
-	aCardHandler applyLastEffectOn: aTarget.
-	aCardHandler changeLastCardTo: self.
-	aCardHandler discard: self
-]
-
-{ #category : 'comparing' }
-RepeatCard >> canPlayRightNow: theShipInTurn [
-
-	^true
+	super activate: aCardHandler withTarget: aTarget.
+	aCardHandler applyLastEffectOn: aTarget
 ]
