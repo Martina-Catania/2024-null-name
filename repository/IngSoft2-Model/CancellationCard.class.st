@@ -9,11 +9,10 @@ Class {
 CancellationCard >> activate: aCardHandler withTarget: aCard [
 
 	target := aCard.
-	
 	aCardHandler deactivate: aCard.
 	aCardHandler removeFromActiveCard: target objective.
-	
 	aCardHandler changeLastCardTo: self.
+	aCardHandler discard: self.
 ]
 
 { #category : 'comparing' }

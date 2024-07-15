@@ -62,7 +62,7 @@ CardHandler >> changeLastCardTo: aCard [
 ]
 
 { #category : 'argument validation' }
-CardHandler >> checkTarget: aTarget [
+CardHandler >> checkCancellationTarget: aTarget [
 
 	^ activePermanentCards anySatisfy: [ :card | aTarget = card ]
 ]
@@ -75,10 +75,15 @@ CardHandler >> deactivate: aTarget [
 ]
 
 { #category : 'modifying' }
+CardHandler >> discard: aCard [ 
+	discardedCards add: aCard.
+]
+
+{ #category : 'modifying' }
 CardHandler >> giveCardTo: aShipName [
 
 	gameDeck isEmpty ifTrue: [ self shuffleDiscarded ].
-	cardsInHand add: (gameDeck cardAtRandom withHolder: aShipName)
+	cardsInHand add: ((gameDeck cardAtRandom) withHolder: aShipName)
 ]
 
 { #category : 'initialization' }
@@ -142,7 +147,8 @@ CardHandler >> removeCoalitionOf: aLeader and: aMercenary [
 { #category : 'comparing' }
 CardHandler >> removeFromActiveCard: aTarget [
 
-	activePermanentCards remove: aTarget
+	activePermanentCards remove: aTarget.
+	self discard: aTarget.
 ]
 
 { #category : 'modifying' }
@@ -157,7 +163,7 @@ CardHandler >> shuffleDiscarded [
 		| aCard |
 		aCard := discardedCards atRandom.
 		discardedCards remove: aCard.
-		cards add: aCard ].
+		cards add: aCard class].
 
 	gameDeck := FiniteDeck withCards: cards
 ]

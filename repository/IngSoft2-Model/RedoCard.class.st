@@ -14,8 +14,8 @@ RedoCard >> activate: aCardHandler withTarget: aTarget [
 	target := aTarget.
 	aCardHandler
 		activateCard: (aCardHandler lastCardPlayed class withHolder: holder)
-		withTarget: aTarget
-	
+		withTarget: aTarget.
+	aCardHandler discard: self
 ]
 
 { #category : 'comparing' }

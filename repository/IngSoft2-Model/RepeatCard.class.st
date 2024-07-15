@@ -11,10 +11,10 @@ Class {
 { #category : 'event' }
 RepeatCard >> activate: aCardHandler withTarget: aTarget [
 
-	target:= aTarget.
+	target := aTarget.
 	aCardHandler applyLastEffectOn: aTarget.
 	aCardHandler changeLastCardTo: self.
-	
+	aCardHandler discard: self
 ]
 
 { #category : 'comparing' }

@@ -11,5 +11,5 @@ Class {
 { #category : 'testing' }
 CardTarget >> isValidWith: aCollectionOfShips and: aCardHandler [ 
 	
-	^aCardHandler checkTarget: objective
+	^aCardHandler checkCancellationTarget: objective
 ]
