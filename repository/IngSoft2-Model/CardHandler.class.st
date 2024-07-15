@@ -5,13 +5,13 @@ Class {
 	#name : 'CardHandler',
 	#superclass : 'Object',
 	#instVars : [
-		'activeCards',
 		'game',
 		'lastCardPlayed',
 		'gameDeck',
 		'coalitions',
 		'discardedCards',
-		'cardsInHand'
+		'cardsInHand',
+		'activePermanentCards'
 	],
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
@@ -22,7 +22,7 @@ CardHandler class >> withDeck: aDeck andGame: aGame [
 
 	^ self new
 		  initalizeWithDeck: aDeck
-		  andGame: aGame
+		  inGame: aGame
 ]
 
 { #category : 'generating' }
@@ -40,7 +40,7 @@ CardHandler >> addCoalition: aCoalition [
 { #category : 'comparing' }
 CardHandler >> addToActiveCards: aCard [
 
-	activeCards add: aCard
+	activePermanentCards add: aCard
 ]
 
 { #category : 'generating' }
@@ -64,7 +64,7 @@ CardHandler >> changeLastCardTo: aCard [
 { #category : 'argument validation' }
 CardHandler >> checkTarget: aTarget [
 
-	^ activeCards anySatisfy: [ :card | aTarget = card ]
+	^ activePermanentCards anySatisfy: [ :card | aTarget = card ]
 ]
 
 { #category : 'generating' }
@@ -82,12 +82,12 @@ CardHandler >> giveCardTo: aShipName [
 ]
 
 { #category : 'initialization' }
-CardHandler >> initalizeWithDeck: aDeck andGame: aGame [
+CardHandler >> initalizeWithDeck: aDeck inGame: aGame [
 
 	gameDeck := aDeck.
 	cardsInHand := OrderedCollection new.
 	discardedCards := OrderedCollection new.
-	activeCards := OrderedCollection new.
+	activePermanentCards := OrderedCollection new.
 	lastCardPlayed := NullCard new.
 	game := aGame.
 	coalitions := OrderedCollection new
@@ -117,7 +117,7 @@ CardHandler >> movementCardsActivated: theShipInTurn [
 
 	| temp |
 	temp := 0.
-	activeCards do: [ :card |
+	activePermanentCards do: [ :card |
 		   temp := temp + (card applyMovementOn: theShipInTurn) ].
 	^ temp max: 0
 ]
@@ -142,7 +142,7 @@ CardHandler >> removeCoalitionOf: aLeader and: aMercenary [
 { #category : 'comparing' }
 CardHandler >> removeFromActiveCard: aTarget [
 
-	activeCards remove: aTarget
+	activePermanentCards remove: aTarget
 ]
 
 { #category : 'modifying' }

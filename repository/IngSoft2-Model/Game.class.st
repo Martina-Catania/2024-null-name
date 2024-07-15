@@ -96,8 +96,8 @@ Game >> allShipsPosition [
 Game >> applyEffectOnAllShips: anEffect [
 
 	anEffect affectAShipCollection: gameShips.
-	gameShips do: [ :aShip |
-		gameBoard adjustShipPosition: aShip.]
+	gameShips do: [ :aShip | gameBoard adjustShipPosition: aShip ].
+	lastEffect := anEffect
 ]
 
 { #category : 'event' }
@@ -105,14 +105,16 @@ Game >> applyEffectOnAllShipsButOne: anEffect triggeredBy: aShip [
 
 	anEffect affectAllShips: gameShips but: aShip.
 	gameShips do: [ :anAffectedShip |
-		gameBoard adjustShipPosition: anAffectedShip ]
+		gameBoard adjustShipPosition: anAffectedShip ].
+	lastEffect := anEffect
 ]
 
 { #category : 'event' }
 Game >> applyEffectOnOneShip: anEffect triggeredBy: aShip [
 
 	anEffect affectAShip: aShip.
-	gameBoard adjustShipPosition: aShip
+	gameBoard adjustShipPosition: aShip.
+	lastEffect := anEffect
 ]
 
 { #category : 'generating' }
@@ -145,7 +147,7 @@ Game >> initializeGameWith: aBoard withShipNames: aNameCollection withDice: aDic
 
 	dice := aDice.
 	gameTurnHandler := TurnHandler withShips: gameShips.
-	shipBattleHandler := ShipBattle withDice: dice withShips: gameShips.
+	shipBattleHandler := ShipBattleHandler withDice: dice withShips: gameShips.
 	gameCardHandler := CardHandler withDeck: aDeck andGame: self.
 	theShipInCurrentTurn := gameTurnHandler currentTurnShip.
 	lastEffect := NullEffect new.
@@ -175,7 +177,7 @@ Game >> playCard: aCard by: aShipName toTarget: aTarget [
 	[ gameCardHandler activateCard: aCardToPlay withTarget: aTarget ]
 		on: CardExeption
 		do: [ :ex | ^ ex messageText ].
-		
+
 	gameCardHandler removeCardFromShipDeck: aCardToPlay
 ]
 
@@ -196,8 +198,6 @@ Game >> playTurn [
 	theShipInCurrentTurn moveTiles: movement.
 
 	self adjustShipPosition: theShipInCurrentTurn.
-	lastEffect := gameBoard effectInPosition:
-		              theShipInCurrentTurn position.
 
 	gameBoard applyTileEffectOn: self triggeredBy: theShipInCurrentTurn.
 	shipBattleHandler

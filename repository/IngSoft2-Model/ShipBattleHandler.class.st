@@ -2,7 +2,7 @@
 handles battles between ships and determines who participates
 "
 Class {
-	#name : 'ShipBattle',
+	#name : 'ShipBattleHandler',
 	#superclass : 'Object',
 	#instVars : [
 		'dice',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : 'events' }
-ShipBattle class >> withDice: aCollectionOfDice withShips: aCollectionOfShips [
+ShipBattleHandler class >> withDice: aCollectionOfDice withShips: aCollectionOfShips [
 
 	^ self new
 		  initializeWithShips: aCollectionOfShips
@@ -21,7 +21,7 @@ ShipBattle class >> withDice: aCollectionOfDice withShips: aCollectionOfShips [
 ]
 
 { #category : 'initialization' }
-ShipBattle >> checkShipBattle: currentTurnShip withCardHandler: gameCardHandler [
+ShipBattleHandler >> checkShipBattle: currentTurnShip withCardHandler: gameCardHandler [
 
 	| shipsInSamePosition |
 	currentTurnShip position = 1 ifTrue: [ ^ self ].
@@ -40,14 +40,14 @@ ShipBattle >> checkShipBattle: currentTurnShip withCardHandler: gameCardHandler 
 ]
 
 { #category : 'initialization' }
-ShipBattle >> initializeWithShips: aCollectionOfShips withDice: aCollectionOfDice [
+ShipBattleHandler >> initializeWithShips: aCollectionOfShips withDice: aCollectionOfDice [
 
 	dice := aCollectionOfDice.
 	ships := aCollectionOfShips.
 ]
 
 { #category : 'event' }
-ShipBattle >> resolveBattleBetween: aShip and: anotherShip with: aCardHandler [
+ShipBattleHandler >> resolveBattleBetween: aShip and: anotherShip with: aCardHandler [
 
 	| aShipDiceRoll anotherShipDiceRoll loserShipArmy aShipArmy anotherShipArmy |
 	aShipArmy := self shipsNames: (aCardHandler mercenariesOf: aShip).
@@ -75,13 +75,13 @@ ShipBattle >> resolveBattleBetween: aShip and: anotherShip with: aCardHandler [
 ]
 
 { #category : 'event' }
-ShipBattle >> shipWithName: aShipName [
+ShipBattleHandler >> shipWithName: aShipName [
 
 	^ ships detect: [ :ship | ship shipName = aShipName ]
 ]
 
 { #category : 'event' }
-ShipBattle >> shipsNames: aShipsNameCollection [
+ShipBattleHandler >> shipsNames: aShipsNameCollection [
 	
 	^ aShipsNameCollection collect: [ :shipName | self shipWithName: shipName  ].
 ]
