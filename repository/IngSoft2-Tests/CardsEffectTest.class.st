@@ -26,7 +26,7 @@ CardsEffectTest >> testAShipCannotBeHiredByMoreThanOneShip [
 	
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: MercenaryCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 	
 	aGame := Game
 		         withBoard: aBoard
@@ -67,7 +67,7 @@ CardsEffectTest >> testWhenACancelationCardIsPlayedDeactivateTargetedCard [
 		                     with: CancellationCard
 		                     with: AccelerationCard.
 
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -109,7 +109,7 @@ CardsEffectTest >> testWhenACancelationCardIsPlayedItCannotTargetANonexistentCar
 		                     with: AccelerationCard
 		                     with: CancellationCard
 		                     with: AccelerationCard.
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -150,7 +150,7 @@ CardsEffectTest >> testWhenApplingRepeatCardLastEffectIsAppliedToTheTargetedShip
 
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: RepeatCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 	
 	
 	aGame := Game
@@ -188,7 +188,7 @@ CardsEffectTest >> testWhenApplyingRedoCardLastCardIsPlayedAgain [
 	collectionOfCards := OrderedCollection new.
 	4 timesRepeat: [ collectionOfCards add: RedoCard ].
 	collectionOfCards add: SpeedCard.
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -232,7 +232,7 @@ CardsEffectTest >> testWhenApplyingRedoCardMultipleTimesApplyLastNonRedoCard [
 	collectionOfCards := OrderedCollection new.
 	4 timesRepeat: [ collectionOfCards add: RedoCard ].
 	collectionOfCards add: SpeedCard.
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 	aGame := Game
 		         withBoard: aBoard
 		         withShipNames: aCollectionOfNames
@@ -275,7 +275,7 @@ CardsEffectTest >> testWhenApplyingRepeatCardShipDoesNotMoveOutOfBounds [
 
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: RepeatCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -313,8 +313,8 @@ CardsEffectTest >> testWhenMercenaryCardIsCancelledShipsCanBattleAgain [
 
 	collectionOfCards := OrderedCollection new.
 	4 timesRepeat: [ collectionOfCards add: MercenaryCard ].
-	collectionOfCards add: CancellationCard.
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	2 timesRepeat: [collectionOfCards add: CancellationCard].
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -355,7 +355,7 @@ CardsEffectTest >> testWhenMercenaryCardIsPlayedAlliedShipsDontBattle [
 
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: MercenaryCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -395,7 +395,7 @@ CardsEffectTest >> testWhenOneAccelerationCardIsPlayedShipsMoveOneExtraTile [
 	
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: AccelerationCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 	
 	aGame := Game
 		         withBoard: aBoard
@@ -430,7 +430,7 @@ CardsEffectTest >> testWhenOneSpeedCardIsPlayedTargetedShipMoveOneExtraTile [
 
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: SpeedCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -465,7 +465,7 @@ CardsEffectTest >> testWhenOneSpeedCardIsPlayedWhenShipBattelsItThrowResultIsInc
 
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: SpeedCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -506,7 +506,7 @@ CardsEffectTest >> testWhenShipWithMercenariesBattleAllOfThenThrowTheDice [
 	
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: MercenaryCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 	
 	aGame := Game
 		         withBoard: aBoard

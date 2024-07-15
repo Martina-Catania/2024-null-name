@@ -5,8 +5,7 @@ Class {
 	#name : 'FiniteDeck',
 	#superclass : 'Object',
 	#instVars : [
-		'cards',
-		'size'
+		'cards'
 	],
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
@@ -30,19 +29,25 @@ FiniteDeck class >> withCards: anArrayOfCards [
 FiniteDeck >> cardAtRandom [
 
 	| aCard |
-	aCard := cards atRandom.
+	aCard := cards at: 1.
 	cards remove: aCard.
-	size := cards size.
 	^ aCard
 ]
 
 { #category : 'accessing' }
 FiniteDeck >> deckSize [
-	^size
+
+	^ cards size
 ]
 
 { #category : 'initialization' }
-FiniteDeck >> initalizeWithFiniteCards: aCardCollection [ 
-	cards := aCardCollection.
-	size := aCardCollection size.
+FiniteDeck >> initalizeWithFiniteCards: aCardCollection [
+
+	cards := aCardCollection
+]
+
+{ #category : 'accessing' }
+FiniteDeck >> isEmpty [
+
+	^ cards isEmpty
 ]

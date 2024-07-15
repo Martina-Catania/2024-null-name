@@ -46,7 +46,7 @@ Game class >> withBoard: aBoard withShipNames: aNameCollection withDice: aDice [
 		  withShipNames: aNameCollection asSet
 		  withDice: aDice
 		  withGameDeck:
-		  (LoadedDeck withCards: collectionOfCards)
+		  (FiniteDeck withCards: collectionOfCards)
 ]
 
 { #category : 'class initialization' }
@@ -133,8 +133,7 @@ Game >> canPlayNextTurnOf [
 { #category : 'event' }
 Game >> giveCardToCurrentShip: aShip [
 
-	gameCardHandler
-		giveCardTo: aShip shipName.
+	gameCardHandler giveCardTo: aShip shipName
 ]
 
 { #category : 'initialization' }
@@ -150,7 +149,9 @@ Game >> initializeGameWith: aBoard withShipNames: aNameCollection withDice: aDic
 	gameCardHandler := CardHandler withDeck: aDeck andGame: self.
 	theShipInCurrentTurn := gameTurnHandler currentTurnShip.
 	lastEffect := NullEffect new.
-	gameShips do: [ :ship | gameCardHandler startingCards: ship shipName ]
+	gameShips do: [ :ship |
+		gameCardHandler giveCardTo: ship shipName.
+		gameCardHandler giveCardTo: ship shipName ]
 ]
 
 { #category : 'testing' }
@@ -210,7 +211,7 @@ Game >> playTurn [
 { #category : 'accessing' }
 Game >> shipCards: aShip [
 
-	^ gameCardHandler inPlayDeck select: [ :card | card holder = aShip ]
+	^ gameCardHandler cardsInHand select: [ :card | card holder = aShip ]
 ]
 
 { #category : 'accessing' }

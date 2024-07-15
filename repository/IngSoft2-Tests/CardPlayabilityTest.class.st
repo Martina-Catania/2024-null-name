@@ -21,7 +21,7 @@ CardPlayabilityTest >> testAnPermanentCardCanOnlyBePlayedDuringAShipsTurnInAGame
 
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: AccelerationCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 
 	aGame := Game
 		         withBoard: aBoard
@@ -110,7 +110,7 @@ CardPlayabilityTest >> testCannotPlayACardThatHasInvalidTarget [
 
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: SpeedCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 	
 	
 	aGame := Game
@@ -144,7 +144,7 @@ CardPlayabilityTest >> testWhenGameIsStartedShipsHave2Cards [
 	
 	collectionOfCards := OrderedCollection new.
 	10 timesRepeat: [ collectionOfCards add: SpeedCard ].
-	aDeck := LoadedDeck withCards: collectionOfCards.
+	aDeck := FiniteDeck withCards: collectionOfCards.
 	
 	aGame := Game
 		         withBoard: aBoard

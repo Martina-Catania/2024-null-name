@@ -32,6 +32,42 @@ FiniteDeckTest >> testFiniteDeckCannotHaveLessThanOneCard [
 ]
 
 { #category : 'tests' }
+FiniteDeckTest >> testIfThereAreNoMoreCardsInDeckAndNoDiscardedCardsThenShipCannotDrawCard [
+
+	| aDeck aDeckCreator aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray |
+	aTileArray := OrderedCollection new.
+
+	10 timesRepeat: [ aTileArray add: NullEffect new ].
+	aTileArray at: 4 put: CardGeneratorEffect new.
+	aBoard := Board
+		          withTileEffectCollection: aTileArray
+		          withLengthInUnits: (Parsec withNominalValue: 10)
+		          withAmountOfLaps: 1.
+
+	aDeckCreator := CardDeckCreator createWithProbabilityDistribution:
+		                (OrderedCollection with:
+			                 (ProbabilityAssociation
+				                  associate: NullCard
+				                  withProbability: 100)).
+	aDeck := FiniteDeck withCards:
+		         (aDeckCreator generateDeckWithAmountOfCards: 4).
+
+	aCollectionOfNames := OrderedCollection with: 'Juan' with: 'Jose'.
+	aCollectionOfDie := OrderedCollection with: (LoadedDie of: 3).
+
+	aGame := Game
+		         withBoard: aBoard
+		         withShipNames: aCollectionOfNames
+		         withDice: (Dice with: aCollectionOfDie)
+		         withDeck: aDeck.
+
+	self
+		should: [ aGame playTurn ]
+		raise: Error
+		withMessage: 'There are no cards right now.'
+]
+
+{ #category : 'tests' }
 FiniteDeckTest >> testWhenCardsAreTakenOutOfFiniteDeckItsSizeDecreases [
 
 	| aDeck aDeckCreator aCollectionOfCards |

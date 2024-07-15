@@ -8,9 +8,10 @@ Class {
 		'activeCards',
 		'game',
 		'lastCardPlayed',
-		'inPlayDeck',
 		'gameDeck',
-		'coalitions'
+		'coalitions',
+		'discardedCards',
+		'cardsInHand'
 	],
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
@@ -49,6 +50,12 @@ CardHandler >> applyLastEffectOn: aTarget [
 ]
 
 { #category : 'accessing' }
+CardHandler >> cardsInHand [
+
+	^ cardsInHand
+]
+
+{ #category : 'accessing' }
 CardHandler >> changeLastCardTo: aCard [
 
 	lastCardPlayed := aCard
@@ -68,22 +75,23 @@ CardHandler >> deactivate: aTarget [
 ]
 
 { #category : 'modifying' }
-CardHandler >> giveCardTo: aShipName [
-
-	inPlayDeck add: (gameDeck cardAtRandom withHolder: aShipName)
+CardHandler >> discardCard: aNullCard [ 
+	self shouldBeImplemented.
 ]
 
-{ #category : 'accessing' }
-CardHandler >> inPlayDeck [
+{ #category : 'modifying' }
+CardHandler >> giveCardTo: aShipName [
 
-	^ inPlayDeck
+	gameDeck isEmpty ifTrue: [ self shuffleDiscarded ].
+	cardsInHand add: (gameDeck cardAtRandom withHolder: aShipName)
 ]
 
 { #category : 'initialization' }
 CardHandler >> initalizeWithDeck: aDeck andGame: aGame [
 
 	gameDeck := aDeck.
-	inPlayDeck := OrderedCollection new.
+	cardsInHand := OrderedCollection new.
+	discardedCards := OrderedCollection new.
 	activeCards := OrderedCollection new.
 	lastCardPlayed := NullCard new.
 	game := aGame.
@@ -120,7 +128,7 @@ CardHandler >> movementCardsActivated: theShipInTurn [
 { #category : 'comparing' }
 CardHandler >> removeCardFromShipDeck: aCard [
 
-	inPlayDeck
+	cardsInHand
 		remove: aCard
 		ifAbsent: [ Error signal: 'Card was not found in Ship Deck' ]
 ]
@@ -140,17 +148,27 @@ CardHandler >> removeFromActiveCard: aTarget [
 	activeCards remove: aTarget
 ]
 
-{ #category : 'generating' }
-CardHandler >> startingCards: aShipName [
+{ #category : 'modifying' }
+CardHandler >> shuffleDiscarded [
 
-	2 timesRepeat: [
-		inPlayDeck add: (gameDeck cardAtRandom withHolder: aShipName) ]
+	| cards |
+	discardedCards isEmpty ifTrue: [
+		Error signal: 'There are no cards right now.' ].
+	
+	cards := OrderedCollection new.
+	1 to: discardedCards size do: [ :i |
+		| aCard |
+		aCard := discardedCards atRandom.
+		discardedCards remove: aCard.
+		cards add: aCard ].
+
+	gameDeck := FiniteDeck withCards: cards
 ]
 
 { #category : 'comparing' }
 CardHandler >> validateCard: aCard [
 
-	inPlayDeck
+	cardsInHand
 		detect: [ :card | card = aCard ]
 		ifNone: [ CardExeption signal: 'Ship does not have that card' ]
 ]
