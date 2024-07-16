@@ -14,3 +14,14 @@ DoubleCard >> activate: aCardHandler withTarget: aShip [
 	super activate: aCardHandler withTarget: aShip.
 	aCardHandler addToActiveCards: self.
 ]
+
+{ #category : 'accessing' }
+DoubleCard >> applyExtraBuffsOn: aShip withHandler: aCardHandler [
+
+	| movementBuff |
+	movementBuff := aShip shipName = target objective
+		                ifTrue: [ 2 ]
+		                ifFalse: [ 1 ].
+	aCardHandler removeFromActiveCard: self.
+	^ movementBuff
+]

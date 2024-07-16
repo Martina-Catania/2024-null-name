@@ -33,10 +33,16 @@ Card >> = aCard [
 { #category : 'event' }
 Card >> activate: aCardHandler withTarget: aTarget [
 
-	^ self subclassResponsibility
+	self subclassResponsibility
 ]
 
-{ #category : 'comparing' }
+{ #category : 'accessing' }
+Card >> applyExtraBuffsOn: aTarget withHandler: aCardHandler [
+
+	^ 1
+]
+
+{ #category : 'accessing' }
 Card >> applyMovementOn: aShip [
 
 	^ 0

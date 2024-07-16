@@ -115,6 +115,42 @@ FiniteDeckTest >> testWhenCardsAreTakenOutOfFiniteDeckItsSizeDecreases [
 ]
 
 { #category : 'tests' }
+FiniteDeckTest >> testWhenDoubleCardIsPlayedItIsDiscardedAndShuffledProperly [
+
+	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
+	aTileArray := OrderedCollection new.
+	10 timesRepeat: [ aTileArray add: NullEffect new ].
+	aTileArray at: 4 put: CardGeneratorEffect new.
+
+	aBoard := Board
+		          withTileEffectCollection: aTileArray
+		          withLengthInUnits: (Parsec withNominalValue: 10)
+		          withAmountOfLaps: 1.
+	aCollectionOfNames := OrderedCollection with: 'Juan' with: 'Jose'.
+	aCollectionOfDie := OrderedCollection with:
+		                    (SequenceDie withSequence: #( 2 2 3 3 3 )).
+
+
+	collectionOfCards := OrderedCollection new.
+	4 timesRepeat: [ collectionOfCards add: DoubleCard ].
+	aDeck := FiniteDeck withCards: collectionOfCards.
+
+	aGame := Game
+		         withBoard: aBoard
+		         withShipNames: aCollectionOfNames
+		         withDice: (Dice with: aCollectionOfDie)
+		         withDeck: aDeck.
+
+	aTarget := ShipTarget withObjective: 'Jose'.
+	aGame playCard: DoubleCard by: 'Jose' toTarget: aTarget.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	
+	self assert: ((aGame shipCards: 'Juan')) size equals: 3.
+]
+
+{ #category : 'tests' }
 FiniteDeckTest >> testWhenFiniteDeckIsCreatedItHasASetAmountOfCards [
 
 	| aDeck aDeckCreator |

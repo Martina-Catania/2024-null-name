@@ -20,6 +20,20 @@ ShipBattleHandler class >> withDice: aCollectionOfDice withShips: aCollectionOfS
 		  withDice: aCollectionOfDice
 ]
 
+{ #category : 'event' }
+ShipBattleHandler >> armyDiceThrow: aShipArmy with: aCardHandler [
+
+	| anArmyDiceRoll |
+	anArmyDiceRoll := 0.
+	aShipArmy do: [ :aShipInArmy |
+		| cardMovement |
+		cardMovement := aCardHandler movementCardsActivated: aShipInArmy.
+		anArmyDiceRoll := anArmyDiceRoll + (aCardHandler
+			                   extraBuffs: aShipInArmy
+			                   onThrow: dice throw + cardMovement) ].
+	^ anArmyDiceRoll
+]
+
 { #category : 'initialization' }
 ShipBattleHandler >> checkShipBattle: currentTurnShip withCardHandler: gameCardHandler [
 
@@ -49,29 +63,24 @@ ShipBattleHandler >> initializeWithShips: aCollectionOfShips withDice: aCollecti
 { #category : 'event' }
 ShipBattleHandler >> resolveBattleBetween: aShip and: anotherShip with: aCardHandler [
 
-	| aShipDiceRoll anotherShipDiceRoll loserShipArmy aShipArmy anotherShipArmy |
-	aShipArmy := self shipsNames: (aCardHandler mercenariesOf: aShip).
-	anotherShipArmy := self shipsNames:
-		                   (aCardHandler mercenariesOf: anotherShip).
-
-	aShipDiceRoll := 0.
-	anotherShipDiceRoll := 0.
-	aShipArmy do: [ :aShipInArmy |
-		| cardMovement |
-		cardMovement := aCardHandler movementCardsActivated: aShipInArmy.
-		aShipDiceRoll + dice throw + cardMovement ].
-
-	anotherShipArmy do: [ :aShipInArmy |
-		| cardMovement |
-		cardMovement := aCardHandler movementCardsActivated: aShipInArmy.
-		aShipDiceRoll + dice throw + cardMovement ].
+	| anArmyDiceRoll anotherArmyDiceRoll loserShipArmy anArmy anotherArmy |
 	
-	loserShipArmy := aShipDiceRoll > anotherShipDiceRoll
-		                 ifTrue: [ anotherShipArmy ]
-		                 ifFalse: [ aShipArmy ].
+	anArmy := self shipsNames: (aCardHandler mercenariesOf: aShip).
+	anotherArmy := self shipsNames:
+		               (aCardHandler mercenariesOf: anotherShip).
+
+	anArmyDiceRoll := self armyDiceThrow: anArmy with: aCardHandler.
+	anotherArmyDiceRoll := self
+		                       armyDiceThrow: anotherArmy
+		                       with: aCardHandler.
+
+	loserShipArmy := anArmyDiceRoll > anotherArmyDiceRoll
+		                 ifTrue: [ anotherArmy ]
+		                 ifFalse: [ anArmy ].
+
 	loserShipArmy do: [ :aShipInArmy |
-		aShip loseOneShield.
-		aShip moveToFirstTile ]
+		aShipInArmy loseOneShield.
+		aShipInArmy moveToFirstTile ]
 ]
 
 { #category : 'event' }

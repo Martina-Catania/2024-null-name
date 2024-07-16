@@ -47,41 +47,6 @@ CardsEffectTest >> testAShipCannotBeHiredByMoreThanOneShip [
 ]
 
 { #category : 'tests' }
-CardsEffectTest >> testBananaDouble [
-
-	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
-	aTileArray := OrderedCollection new.
-	5 timesRepeat: [ aTileArray add: NullEffect new ].
-
-	aBoard := Board
-		          withTileEffectCollection: aTileArray
-		          withLengthInUnits: (Parsec withNominalValue: 10)
-		          withAmountOfLaps: 1.
-	aCollectionOfNames := OrderedCollection with: 'Juan' with: 'Jose'.
-	aCollectionOfDie := OrderedCollection with:
-		                    (SequenceDie withSequence: #( 2 2 3 )).
-
-
-	collectionOfCards := OrderedCollection new.
-	10 timesRepeat: [ collectionOfCards add: DoubleCard ].
-	aDeck := FiniteDeck withCards: collectionOfCards.
-
-	aGame := Game
-		         withBoard: aBoard
-		         withShipNames: aCollectionOfNames
-		         withDice: (Dice with: aCollectionOfDie)
-		         withDeck: aDeck.
-
-	aTarget := ShipTarget withObjective: 'Jose'.
-	aGame playCard: DoubleCard by: 'Jose' toTarget: aTarget.
-	aGame playTurn.
-	aGame playTurn.
-
-	self assert: (aGame allShipAmountOfShields at: 'Juan') equals: 2.
-	self assert: (aGame allShipAmountOfShields at: 'Jose') equals: 3
-]
-
-{ #category : 'tests' }
 CardsEffectTest >> testWhenACancelationCardIsPlayedDeactivateTargetedCard [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
@@ -393,6 +358,41 @@ CardsEffectTest >> testWhenDefendCardIsPlayedOnFullShieldsShipIncreaseMaxShieldC
 ]
 
 { #category : 'tests' }
+CardsEffectTest >> testWhenDoubleCardIsPlayedTargetShipsThrowIsDoubled [
+
+	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget |
+	aTileArray := OrderedCollection new.
+	5 timesRepeat: [ aTileArray add: NullEffect new ].
+
+	aBoard := Board
+		          withTileEffectCollection: aTileArray
+		          withLengthInUnits: (Parsec withNominalValue: 10)
+		          withAmountOfLaps: 1.
+	aCollectionOfNames := OrderedCollection with: 'Juan' with: 'Jose'.
+	aCollectionOfDie := OrderedCollection with:
+		                    (SequenceDie withSequence: #( 2 2 3 )).
+
+
+	collectionOfCards := OrderedCollection new.
+	5 timesRepeat: [ collectionOfCards add: DoubleCard ].
+	aDeck := FiniteDeck withCards: collectionOfCards.
+
+	aGame := Game
+		         withBoard: aBoard
+		         withShipNames: aCollectionOfNames
+		         withDice: (Dice with: aCollectionOfDie)
+		         withDeck: aDeck.
+
+	aTarget := ShipTarget withObjective: 'Jose'.
+	aGame playCard: DoubleCard by: 'Jose' toTarget: aTarget.
+	aGame playTurn.
+	aGame playTurn.
+
+	self assert: (aGame allShipAmountOfShields at: 'Juan') equals: 2.
+	self assert: (aGame allShipAmountOfShields at: 'Jose') equals: 3
+]
+
+{ #category : 'tests' }
 CardsEffectTest >> testWhenMercenaryCardIsCancelledShipsCanBattleAgain [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
@@ -548,7 +548,7 @@ CardsEffectTest >> testWhenOneSpeedCardIsPlayedTargetedShipMoveOneExtraTile [
 ]
 
 { #category : 'tests' }
-CardsEffectTest >> testWhenOneSpeedCardIsPlayedWhenShipBattelsItThrowResultIsIncreasedByOne [
+CardsEffectTest >> testWhenOneSpeedCardIsPlayedWhenShipBattlesItThrowsResultIsIncreasedByOne [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget|
 	aTileArray := OrderedCollection new.

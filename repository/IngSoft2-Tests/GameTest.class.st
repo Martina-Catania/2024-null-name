@@ -25,7 +25,7 @@ GameTest >> testAGameCanShowTheCurrentRanking [
 		                      with: 'Fran'.
 
 	aCollectionOfDie := OrderedCollection with:
-		                    (SequenceDie withSequence: #( 3 1 8 )).
+		                    (SequenceDie withSequence: #( 3 1 9 )).
 
 	aTileArray := OrderedCollection new.
 	10 timesRepeat: [ aTileArray add: NullEffect new ].

@@ -8,7 +8,7 @@ Class {
 	#package : 'IngSoft2-Model'
 }
 
-{ #category : 'comparing' }
+{ #category : 'accessing' }
 SpeedCard >> applyMovementOn: aShip [
 
 	| movementBuff |

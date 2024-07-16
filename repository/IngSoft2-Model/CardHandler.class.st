@@ -86,6 +86,16 @@ CardHandler >> discard: aCard [
 ]
 
 { #category : 'modifying' }
+CardHandler >> extraBuffs: theShipInTurn onThrow: aDiceThrow [
+
+	| aux |
+	aux := aDiceThrow.
+	activePermanentCards do: [ :card |
+		aux := aux * (card applyExtraBuffsOn: theShipInTurn withHandler: self) ].
+	^ aux max: 0
+]
+
+{ #category : 'modifying' }
 CardHandler >> giveCardTo: aShipName [
 
 	gameDeck isEmpty ifTrue: [ self shuffleDiscarded ].
