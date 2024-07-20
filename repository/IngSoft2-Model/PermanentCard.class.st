@@ -8,12 +8,6 @@ Class {
 	#package : 'IngSoft2-Model'
 }
 
-{ #category : 'testing' }
-PermanentCard class >> isAbstract [
-
-	^ self == PermanentCard
-]
-
 { #category : 'event' }
 PermanentCard >> activate: aCardHandler withTarget: aTarget [
 	

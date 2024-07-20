@@ -9,12 +9,6 @@ Class {
 	#package : 'IngSoft2-Model'
 }
 
-{ #category : 'testing' }
-InstantCard class >> isAbstract [
-
-	^ self == InstantCard
-]
-
 { #category : 'event' }
 InstantCard >> activate: aCardHandler withTarget: aTarget [
 
