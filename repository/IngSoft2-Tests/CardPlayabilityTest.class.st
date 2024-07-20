@@ -128,6 +128,47 @@ CardPlayabilityTest >> testCannotPlayACardThatHasInvalidTarget [
 ]
 
 { #category : 'tests' }
+CardPlayabilityTest >> testInstantCardsCannotBeCancelled [
+
+	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray collectionOfCards aDeck aTarget anotherTarget |
+	aTileArray := OrderedCollection new.
+	5 timesRepeat: [ aTileArray add: NullEffect new ].
+
+	aBoard := Board
+		          withTileEffectCollection: aTileArray
+		          withLengthInUnits: (Parsec withNominalValue: 10)
+		          withAmountOfLaps: 1.
+	aCollectionOfNames := OrderedCollection with: 'Juan' with: 'Jose'.
+	aCollectionOfDie := OrderedCollection with:
+		                    (SequenceDie withSequence: #( 2 2 3 )).
+
+
+	collectionOfCards := OrderedCollection
+		                     with: CancellationCard
+		                     with: DoubleCard
+		                     with: CancellationCard
+		                     with: DoubleCard.
+	aDeck := FiniteDeck withCards: collectionOfCards.
+
+	aGame := Game
+		         withBoard: aBoard
+		         withShipNames: aCollectionOfNames
+		         withDice: (Dice with: aCollectionOfDie)
+		         withDeck: aDeck.
+
+	aTarget := ShipTarget withObjective: 'Jose'.
+	anotherTarget := CardTarget withObjective:
+		                 (DoubleCard withHolder: 'Jose').
+	aGame playCard: DoubleCard by: 'Jose' toTarget: aTarget.
+
+	self
+		should: [
+		aGame playCard: CancellationCard by: 'Juan' toTarget: anotherTarget ]
+		raise: CardExeption
+		withMessage: 'Target is not valid'
+]
+
+{ #category : 'tests' }
 CardPlayabilityTest >> testWhenGameIsStartedShipsHave2Cards [
 
 	| aGame aBoard aCollectionOfNames aCollectionOfDie aTileArray aDeck collectionOfCards|

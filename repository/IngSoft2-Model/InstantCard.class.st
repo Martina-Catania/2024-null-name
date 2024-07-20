@@ -18,6 +18,12 @@ InstantCard >> activate: aCardHandler withTarget: aTarget [
 ]
 
 { #category : 'comparing' }
+InstantCard >> canBeCancelled [
+
+	^ false
+]
+
+{ #category : 'comparing' }
 InstantCard >> canPlayRightNow: theShipInTurn [
 
 	^ true

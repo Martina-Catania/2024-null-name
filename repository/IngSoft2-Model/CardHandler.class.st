@@ -70,7 +70,7 @@ CardHandler >> changeLastCardTo: aCard [
 { #category : 'argument validation' }
 CardHandler >> checkCancellationTarget: aTarget [
 
-	^ activeCards anySatisfy: [ :card | aTarget = card ]
+	^ activeCards anySatisfy: [ :card | aTarget = card and: (aTarget canBeCancelled)]
 ]
 
 { #category : 'modifying' }

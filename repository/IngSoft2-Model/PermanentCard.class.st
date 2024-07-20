@@ -16,6 +16,12 @@ PermanentCard >> activate: aCardHandler withTarget: aTarget [
 	aCardHandler changeLastCardTo: self.
 ]
 
+{ #category : 'event' }
+PermanentCard >> canBeCancelled [
+
+	^ true
+]
+
 { #category : 'comparing' }
 PermanentCard >> canPlayRightNow: theShipInTurn [
 
