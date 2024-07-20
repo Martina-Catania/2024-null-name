@@ -22,5 +22,6 @@ MercenaryCard >> activate: aCardHandler withTarget: aShip [
 { #category : 'event' }
 MercenaryCard >> deactivate: aCardHandler [
 
+	super deactivate: aCardHandler.
 	aCardHandler removeCoalitionOf: holder and: target
 ]
