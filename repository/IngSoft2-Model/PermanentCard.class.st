@@ -21,3 +21,9 @@ PermanentCard >> canPlayRightNow: theShipInTurn [
 
 	^ theShipInTurn shipName = holder
 ]
+
+{ #category : 'event' }
+PermanentCard >> deactivate: aCardHandler [
+
+	aCardHandler discard: self.
+]

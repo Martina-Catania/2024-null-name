@@ -12,6 +12,5 @@ Class {
 CancellationCard >> activate: aCardHandler withTarget: aCard [
 
 	super activate: aCardHandler withTarget: aCard.
-	aCardHandler deactivate: aCard.
-	aCardHandler removeFromActiveCard: target objective.
+	aCardHandler removeFromActiveCards: target objective.
 ]

@@ -22,6 +22,6 @@ DoubleCard >> applyExtraBuffsOn: aShip withHandler: aCardHandler [
 	movementBuff := aShip shipName = target objective
 		                ifTrue: [ 2 ]
 		                ifFalse: [ 1 ].
-	aCardHandler removeFromActiveCard: self.
+	aCardHandler removeFromActiveCards: self.
 	^ movementBuff
 ]

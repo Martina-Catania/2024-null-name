@@ -11,7 +11,7 @@ Class {
 		'coalitions',
 		'discardedCards',
 		'cardsInHand',
-		'activePermanentCards'
+		'activeCards'
 	],
 	#category : 'IngSoft2-Model',
 	#package : 'IngSoft2-Model'
@@ -46,7 +46,7 @@ CardHandler >> addShieldTo: aShipName [
 { #category : 'comparing' }
 CardHandler >> addToActiveCards: aCard [
 
-	activePermanentCards add: aCard
+	activeCards add: aCard
 ]
 
 { #category : 'generating' }
@@ -70,7 +70,7 @@ CardHandler >> changeLastCardTo: aCard [
 { #category : 'argument validation' }
 CardHandler >> checkCancellationTarget: aTarget [
 
-	^ activePermanentCards anySatisfy: [ :card | aTarget = card ]
+	^ activeCards anySatisfy: [ :card | aTarget = card ]
 ]
 
 { #category : 'generating' }
@@ -90,7 +90,7 @@ CardHandler >> extraBuffs: theShipInTurn onThrow: aDiceThrow [
 
 	| aux |
 	aux := aDiceThrow.
-	activePermanentCards do: [ :card |
+	activeCards do: [ :card |
 		aux := aux * (card applyExtraBuffsOn: theShipInTurn withHandler: self) ].
 	^ aux max: 0
 ]
@@ -108,7 +108,7 @@ CardHandler >> initalizeWithDeck: aDeck inGame: aGame [
 	gameDeck := aDeck.
 	cardsInHand := OrderedCollection new.
 	discardedCards := OrderedCollection new.
-	activePermanentCards := OrderedCollection new.
+	activeCards := OrderedCollection new.
 	lastCardPlayed := NullCard new.
 	game := aGame.
 	coalitions := OrderedCollection new
@@ -138,7 +138,7 @@ CardHandler >> movementCardsActivated: theShipInTurn [
 
 	| temp |
 	temp := 0.
-	activePermanentCards do: [ :card |
+	activeCards do: [ :card |
 		   temp := temp + (card applyMovementOn: theShipInTurn) ].
 	^ temp max: 0
 ]
@@ -161,10 +161,10 @@ CardHandler >> removeCoalitionOf: aLeader and: aMercenary [
 ]
 
 { #category : 'comparing' }
-CardHandler >> removeFromActiveCard: aTarget [
+CardHandler >> removeFromActiveCards: aTarget [
 
-	activePermanentCards remove: aTarget.
-	self discard: aTarget.
+	activeCards remove: aTarget.
+	aTarget deactivate: self.
 ]
 
 { #category : 'modifying' }
