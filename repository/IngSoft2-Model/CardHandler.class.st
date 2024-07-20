@@ -73,13 +73,6 @@ CardHandler >> checkCancellationTarget: aTarget [
 	^ activeCards anySatisfy: [ :card | aTarget = card ]
 ]
 
-{ #category : 'generating' }
-CardHandler >> deactivate: aTarget [
-
-	aTarget objective deactivate: self.
-
-]
-
 { #category : 'modifying' }
 CardHandler >> discard: aCard [ 
 	discardedCards add: aCard.
